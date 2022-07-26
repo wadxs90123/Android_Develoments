@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab1</string>
+    <string name="button">Button</string>
+    <string name="button2">我要計算</string>
+    <string name="textview">TextView</string>
+    <string name="_1_n">計算到1+...+N</string>
+    <string name="cal_button">計算</string>
+    <string name="n_hint">請輸入N</string>
+    <string name="back_index">回主頁面</string>
+</resources>
