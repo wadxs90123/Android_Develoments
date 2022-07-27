@@ -1,6 +1,7 @@
 Practiced "Data Binding" and "Life Data"
 To Enabled Data Binding in Gradle(Module),
 
+        /*In Gradle(Module)*/
         defaultConfig
         {
             applicationId "com.example.lab2"
@@ -19,4 +20,5 @@ To Enabled Data Binding in Gradle(Module),
 Do like above.
 
 Data Binding -> Used to Bind the datas in XML files(ViewMode -> XML).
+
 Life Data -> Dynamically update datas(ViewModel).
