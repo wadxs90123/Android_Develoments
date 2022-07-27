@@ -34,7 +34,6 @@ public class MainActivity2 extends AppCompatActivity {
                 double value = Double.parseDouble(et.getText().toString());
                 double km = 1.61 * value;
                 tv.setText("結果: "+ km+" 公里");
-
             }
         });
 
@@ -45,6 +44,5 @@ public class MainActivity2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

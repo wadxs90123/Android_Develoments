@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab2</string>
+    <string name="username">帳號:</string>
+    <string name="password">密碼:</string>
+    <string name="typeUsernaem">輸入帳號</string>
+    <string name="typePassword">輸入密碼</string>
+    <string name="button">Button</string>
+    <string name="textview">TextView</string>
+</resources>
