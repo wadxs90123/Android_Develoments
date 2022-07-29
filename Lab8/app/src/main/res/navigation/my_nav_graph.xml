@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav_graph"
+    app:startDestination="@id/workFragment">
+
+    <fragment
+        android:id="@+id/workFragment"
+        android:name="com.example.lab8.WorkFragment"
+        android:label="找工作"
+        tools:layout="@layout/fragment_work" >
+        <action
+            android:id="@+id/action_workFragment_to_inQuestFragment"
+            app:destination="@id/inQuestFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/commentFragment"
+        android:name="com.example.lab8.CommentFragment"
+        android:label="聯絡紀錄"
+        tools:layout="@layout/fragment_comment" />
+    <fragment
+        android:id="@+id/personFragment"
+        android:name="com.example.lab8.PersonFragment"
+        android:label="我的"
+        tools:layout="@layout/fragment_person" />
+    <fragment
+        android:id="@+id/inQuestFragment"
+        android:name="com.example.lab8.InQuestFragment"
+        android:label="fragment_in_quest"
+        tools:layout="@layout/fragment_in_quest" >
+        <action
+            android:id="@+id/action_inQuestFragment_to_workFragment"
+            app:destination="@id/workFragment" />
+    </fragment>
+</navigation>
