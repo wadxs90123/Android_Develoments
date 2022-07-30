@@ -22,12 +22,12 @@ public class Quest {
     private int PayOff;
     private String Content;
     private String Location;
-    private String PayMethod;
     private String Date;
     private Long currentTime;
+    private String time;
 
     public Quest(){}
-    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date){
+    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
         this.id = id;
         this.PosterName = PosterName;
         this.ReceiverName = ReceiverName;
@@ -36,6 +36,7 @@ public class Quest {
         this.Content = Content;
         this.Location = Location;
         this.Date = Date;
+        this.time = time;
         this.isTaken = false;
         currentTime = System.currentTimeMillis();
     }
@@ -46,6 +47,14 @@ public class Quest {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getPosterName() {
@@ -96,13 +105,6 @@ public class Quest {
         Location = location;
     }
 
-    public String getPayMethod() {
-        return PayMethod;
-    }
-
-    public void setPayMethod(String payMethod) {
-        PayMethod = payMethod;
-    }
 
     public boolean isTaken() {
         return isTaken;

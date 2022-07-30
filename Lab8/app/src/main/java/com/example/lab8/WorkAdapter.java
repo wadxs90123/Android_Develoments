@@ -77,9 +77,15 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
                 Log.d("get", "onBindViewHolder: "+position);
-
-
+                Intent intent = new Intent(MainActivity.activity,InQuestActivity.class);
+                intent.putExtra("Position",position);
+                MainActivity.activity.startActivity(intent);
             });
+            if(mData.get(position).isTaken()){
+                holder.itemView.setVisibility(View.INVISIBLE);
+            }else{
+                holder.itemView.setVisibility(View.VISIBLE);
+            }
         }
 
         @Override

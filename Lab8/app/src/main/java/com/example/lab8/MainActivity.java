@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private static NavHostFragment fragment;
     private static NavController navController;
     private static BottomNavigationView bottomNavigationView;
-    private static Activity activity;
+    public static Activity activity;
     private static User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

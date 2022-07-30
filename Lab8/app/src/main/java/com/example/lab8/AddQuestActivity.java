@@ -50,7 +50,7 @@ public class AddQuestActivity extends AppCompatActivity {
             String DateTo = binding.timePicker2.getText().toString();
             String time = binding.timePicker.getText().toString();
 
-            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo));
+            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo),time);
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         });
