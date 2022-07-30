@@ -5,6 +5,7 @@
       <map>
         <entry key="app/src/main/res/drawable/ic_baseline_edit_calendar_24.xml" value="0.2045" />
         <entry key="app/src/main/res/drawable/ic_baseline_work_24.xml" value="0.119" />
+        <entry key="app/src/main/res/drawable/shape_button.xml" value="0.1905" />
         <entry key="app/src/main/res/layout/activity_add_quest.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_in_quest.xml" value="0.325" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
