@@ -26,7 +26,7 @@
             app:layout_constraintHorizontal_bias="0.056"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline8"
-            app:layout_constraintVertical_bias="0.571"
+            app:layout_constraintVertical_bias="0.314"
             app:srcCompat="@drawable/ic_baseline_person_128"
             tools:src="@drawable/ic_baseline_person_128" />
 
@@ -47,34 +47,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.03" />
+            app:layout_constraintGuide_percent="0.0" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.3" />
+            app:layout_constraintGuide_percent="0.45" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
+            app:layout_constraintGuide_percent="0.77" />
 
         <TextView
             android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="84dp"
+            android:layout_marginStart="80dp"
             android:text="王先生"
             android:textSize="34sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/guideline9"
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/guideline8"
-            app:layout_constraintVertical_bias="0.593" />
+            app:layout_constraintVertical_bias="0.451" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -83,37 +83,42 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline10"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline9">
+            app:layout_constraintTop_toTopOf="@+id/guideline9"
+            app:layout_constraintVertical_bias="0.45">
 
             <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:shadowColor="@color/black"
-                android:textColor="@color/black"
                 android:background="@drawable/shape_button"
-                android:text="Button" />
+                android:elevation="6dp"
+                android:shadowColor="@color/black"
+                android:text="我發布的工作"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:shadowColor="@color/black"
-                android:textColor="@color/black"
                 android:background="@drawable/shape_button"
-                android:text="Button" />
+                android:shadowColor="@color/black"
+                android:text="我應徵的工作"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/button5"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:shadowColor="@color/black"
-                android:textColor="@color/black"
                 android:background="@drawable/shape_button"
-                android:text="Button" />
+                android:shadowColor="@color/black"
+                android:text="登出"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

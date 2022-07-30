@@ -1,13 +1,12 @@
 package com.example.lab8;
 
-import android.content.Context;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
+import com.example.lab8.models.Message;
+import com.example.lab8.models.Quest;
+import com.example.lab8.models.User;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -15,6 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class FirebaseUtil {
     public static String loginUsername;
@@ -23,6 +23,9 @@ public class FirebaseUtil {
 
     public static DatabaseReference users = FirebaseDatabase.getInstance().getReference("Users");
 
+//    public static ArrayList<Quest> PostQuestStore = new ArrayList<>();
+//    public static ArrayList<Quest> TakenQuestStore = new ArrayList<>();
+    public static ArrayList<Message> MessageStore = new ArrayList<>();
     public static ArrayList<User> UserStore = new ArrayList<>();
     public static ArrayList<Quest> QuestStore = new ArrayList<>();
 
@@ -38,6 +41,7 @@ public class FirebaseUtil {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot ds : snapshot.getChildren()){
+
                                 QuestStore.add(ds.getValue(Quest.class));
                             }
                         }
@@ -47,7 +51,19 @@ public class FirebaseUtil {
 
                         }
                     });
+                    users.child(ds.getValue(User.class).getUsername()).child("message").addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for(DataSnapshot ds : snapshot.getChildren()){
+                                MessageStore.add(ds.getValue(Message.class));
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
                 }
             }
             @Override
@@ -55,6 +71,24 @@ public class FirebaseUtil {
 
             }
         });
+    }
+    public static Quest getQuest(String ID){
+        for(Quest q : QuestStore){
+            if(q.getId().equals(ID)){
+                return q;
+            }
+        }
+        return null;
+    }
+    public static void sendMessage(String Receiver,String msg){
+        DatabaseReference ref = users.child(loginUsername).child("message").child(Receiver);
+        for(Message m : MessageStore){
+            if(m.getSender().equals(loginUsername)&&m.getReceiver().equals(Receiver)){
+                m.getMessages().add(msg);
+                ref.setValue(m);
+                return;
+            }
+        }
     }
     public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
         DatabaseReference ref = users.child(PosterName).child("Quests");
@@ -76,6 +110,14 @@ public class FirebaseUtil {
             DatabaseReference ref = users.child(quest.getPosterName()).child("Quests").child(quest.getId());
             ref.setValue(quest);
         }
+    }
+    public static void QuitQuest(Quest quest){
+        quest.setReceiverName(null);
+        quest.setTaken(false);
+        users.child(quest.getPosterName()).child("Quests").child(quest.getId()).setValue(quest);
+    }
+    public static void deleteQuest(Quest quest){
+        users.child(quest.getPosterName()).child("Quests").child(quest.getId()).removeValue();
     }
     public static void addUser(String username,String password){
         User user = new User(username,password);

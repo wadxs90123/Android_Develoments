@@ -4,15 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable
-            name="data"
-            type="com.example.lab8.AddQuestViewModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AddQuestActivity">
+        tools:context=".Activities.AddQuestActivity">
 
         <EditText
             android:id="@+id/timePicker"

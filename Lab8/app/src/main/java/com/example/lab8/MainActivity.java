@@ -1,23 +1,16 @@
 package com.example.lab8;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 
+import com.example.lab8.models.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static NavHostFragment fragment;
@@ -54,4 +47,5 @@ public class MainActivity extends AppCompatActivity {
     public static void setUser(User u){
         user = u;
     }
+
 }

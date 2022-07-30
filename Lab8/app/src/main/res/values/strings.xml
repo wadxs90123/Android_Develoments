@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">Lab8</string>
+    <string name="app_name">垃圾通</string>
     <string name="AddQuestTitle">發布任務</string>
     <string name="TimePickerLabel">請選擇時間</string>
+    <string name="floatingimage">FloatingImage</string>
+    <string name="type_a_message">請輸入訊息</string>
 </resources>

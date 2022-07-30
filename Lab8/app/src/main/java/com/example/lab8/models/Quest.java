@@ -1,4 +1,4 @@
-package com.example.lab8;
+package com.example.lab8.models;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

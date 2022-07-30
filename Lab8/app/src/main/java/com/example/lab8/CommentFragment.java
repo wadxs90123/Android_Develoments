@@ -1,5 +1,6 @@
 package com.example.lab8;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -12,6 +13,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.lab8.databinding.FragmentCommentBinding;
+import com.example.lab8.databinding.FragmentWorkBinding;
+
 public class CommentFragment extends Fragment {
 
     private CommentViewModel mViewModel;
@@ -23,14 +27,13 @@ public class CommentFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_comment, container, false);
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        //Data Binding
         mViewModel = new ViewModelProvider(this).get(CommentViewModel.class);
-        // TODO: Use the ViewModel
-    }
+        FragmentCommentBinding binding = DataBindingUtil.inflate(inflater,R.layout.fragment_comment,container,false);
+        binding.setData(mViewModel);
+        binding.setLifecycleOwner(getActivity());
+        //Data Binding
 
+        return binding.getRoot();
+    }
 }

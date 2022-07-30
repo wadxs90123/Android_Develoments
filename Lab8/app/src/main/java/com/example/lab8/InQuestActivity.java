@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.lab8.databinding.ActivityInQuestBinding;
+import com.example.lab8.models.Quest;
 
 
 public class InQuestActivity extends AppCompatActivity {
@@ -26,8 +27,22 @@ public class InQuestActivity extends AppCompatActivity {
         binding.inQuestPosterText.setText(quest.getPosterName());
         binding.InQuestLocationText.setText(quest.getLocation());
 
+        if(quest.getPosterName().equals(FirebaseUtil.loginUsername)){
+            binding.AskButton.setEnabled(false);
+            binding.TakeQuest.setEnabled(false);
+        }else{
+            binding.TakeQuest.setEnabled(true);
+            binding.AskButton.setEnabled(true);
+        }
+
         binding.InQuestBackButton.setOnClickListener(view -> {
             Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        });
+        binding.AskButton.setOnClickListener(view -> {
+            Intent intent = new Intent(this,MessageActivity.class);
+            intent.putExtra("ID",quest.getId());
+            intent.putExtra("Name",quest.getPosterName());
             startActivity(intent);
         });
 

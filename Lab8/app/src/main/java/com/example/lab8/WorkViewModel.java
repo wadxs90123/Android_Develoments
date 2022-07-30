@@ -3,6 +3,8 @@ package com.example.lab8;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.lab8.models.Quest;
+
 import java.util.ArrayList;
 
 public class WorkViewModel extends ViewModel {

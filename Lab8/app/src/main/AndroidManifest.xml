@@ -14,13 +14,28 @@
         android:theme="@style/Theme.Lab8"
         tools:targetApi="31">
         <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakenInQuestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PosterInQuestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PostWorksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TakenWorksActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".InQuestActivity"
             android:exported="false" />
         <activity
-            android:name=".AddQuestActivity"
+            android:name=".Activities.AddQuestActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

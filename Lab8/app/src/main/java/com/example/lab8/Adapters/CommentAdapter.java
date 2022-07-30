@@ -1,4 +1,4 @@
-package com.example.lab8;
+package com.example.lab8.Adapters;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -10,30 +10,24 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import org.w3c.dom.Text;
+import com.example.lab8.MainActivity;
+import com.example.lab8.PosterInQuestActivity;
+import com.example.lab8.R;
+import com.example.lab8.models.Quest;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
+public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder>{
 
-        private Fragment fragment;
+        private Activity activity;
         private ArrayList<Quest> mData = new ArrayList<>();
 
-        WorkAdapter(ArrayList<Quest> data,Fragment fragment) {
+        CommentAdapter(ArrayList<Quest> data, Activity activity) {
             mData = data;
-            this.fragment = fragment;
+            this.activity = activity;
         }
 
         // 建立ViewHolder
@@ -77,15 +71,15 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
                 Log.d("get", "onBindViewHolder: "+position);
-                Intent intent = new Intent(MainActivity.activity,InQuestActivity.class);
+                Intent intent = new Intent(this.activity, PosterInQuestActivity.class);
                 intent.putExtra("Position",position);
                 MainActivity.activity.startActivity(intent);
             });
-            if(mData.get(position).isTaken()){
-                holder.itemView.setVisibility(View.INVISIBLE);
-            }else{
-                holder.itemView.setVisibility(View.VISIBLE);
-            }
+//            if(mData.get(position).isTaken()){
+//                holder.itemView.setVisibility(View.INVISIBLE);
+//            }else{
+//                holder.itemView.setVisibility(View.VISIBLE);
+//            }
         }
 
         @Override

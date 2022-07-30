@@ -1,13 +1,15 @@
-package com.example.lab8;
+package com.example.lab8.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 
 public class User {
 
 
     private String username;
     private String password;
-
+    private Message message;
     public User(){
 
     }
@@ -16,8 +18,6 @@ public class User {
         this.password = password;
 
     }
-
-
 
     public String getUsername() {
         return username;
