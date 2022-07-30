@@ -78,15 +78,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             holder.itemView.setOnClickListener(view -> {
                 Log.d("get", "onBindViewHolder: "+position);
 
-                NavHostFragment navFragment = (NavHostFragment) fragment.getActivity().getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView2);//找到navcontroller
-                NavController controller = navFragment.getNavController();
 
-                BottomNavigationView bottomNavigationView = fragment.getActivity().findViewById(R.id.bottomNavigationView);
-                bottomNavigationView.getMenu().getItem(0).setVisible(false);
-                bottomNavigationView.getMenu().getItem(1).setVisible(false);
-                bottomNavigationView.getMenu().getItem(2).setVisible(false);
-
-                controller.navigate(R.id.action_workFragment_to_inQuestFragment);
             });
         }
 

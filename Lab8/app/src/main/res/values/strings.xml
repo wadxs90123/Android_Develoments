@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Lab8</string>
+    <string name="AddQuestTitle">發布任務</string>
+    <string name="TimePickerLabel">請選擇時間</string>
 </resources>

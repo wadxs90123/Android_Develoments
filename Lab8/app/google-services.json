@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "504461983294",
+    "firebase_url": "https://gabageapp-default-rtdb.firebaseio.com",
+    "project_id": "gabageapp",
+    "storage_bucket": "gabageapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:504461983294:android:e15d1ae28e529497429b6f",
+        "android_client_info": {
+          "package_name": "com.example.lab8"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "504461983294-kmtn2793fk0lq1bkmooqg7l57v4ip0df.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDXHs7deWrmHxH8GQ_HZlKz8mxxL55pJGY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "504461983294-kmtn2793fk0lq1bkmooqg7l57v4ip0df.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

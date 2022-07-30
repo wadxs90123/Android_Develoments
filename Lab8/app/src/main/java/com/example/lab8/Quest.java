@@ -1,5 +1,6 @@
 package com.example.lab8;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 public class Quest {
@@ -16,6 +17,7 @@ public class Quest {
 
     private boolean isTaken;//是否被接取了
 
+    private String id;
     private String QuestName;
     private int PayOff;
     private String Content;
@@ -25,17 +27,25 @@ public class Quest {
     private Long currentTime;
 
     public Quest(){}
-    public Quest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String PayMethod,String Date){
+    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date){
+        this.id = id;
         this.PosterName = PosterName;
         this.ReceiverName = ReceiverName;
         this.QuestName = QuestName;
         this.PayOff = Payoff;
         this.Content = Content;
         this.Location = Location;
-        this.PayMethod = PayMethod;
         this.Date = Date;
         this.isTaken = false;
         currentTime = System.currentTimeMillis();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPosterName() {
