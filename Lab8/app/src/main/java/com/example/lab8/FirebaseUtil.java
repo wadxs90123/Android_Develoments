@@ -4,6 +4,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import com.example.lab8.Adapters.MessageAdapter;
 import com.example.lab8.models.Message;
 import com.example.lab8.models.Quest;
 import com.example.lab8.models.User;
@@ -38,6 +39,7 @@ public class FirebaseUtil {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     MessageStore.add(ds.getValue(Message.class));
                 }
+                MessageActivity.setup();
             }
 
             @Override

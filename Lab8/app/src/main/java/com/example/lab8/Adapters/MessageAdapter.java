@@ -27,15 +27,13 @@ import java.util.concurrent.TimeUnit;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-        private Activity activity;
         private ArrayList<Message> mData = new ArrayList<>();
 
         public static final int VIEW_TYPE_SENT=1;
         public static final int VIEW_TYPE_RECEIVE=2;
 
-        public MessageAdapter(ArrayList<Message> data, Activity activity) {
+        public MessageAdapter(ArrayList<Message> data ) {
             mData = data;
-            this.activity = activity;
         }
 
     @NonNull
