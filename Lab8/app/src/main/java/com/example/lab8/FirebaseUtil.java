@@ -58,9 +58,9 @@ public class FirebaseUtil {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             for(DataSnapshot ds : snapshot.getChildren()){
-
                                 QuestStore.add(ds.getValue(Quest.class));
                             }
+                            WorkFragment.setup();
                         }
 
                         @Override

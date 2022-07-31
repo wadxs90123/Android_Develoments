@@ -17,8 +17,8 @@ public class PosterInQuestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_poster_in_quest);
         ActivityPosterInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_poster_in_quest);
 
-        int position = getIntent().getIntExtra("Position",0);
-        Quest quest = FirebaseUtil.QuestStore.get(position);
+        String ID = getIntent().getStringExtra("ID");
+        Quest quest = FirebaseUtil.getQuest(ID);
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
         binding.inQuestPayoffText.setText("$"+quest.getPayOff());

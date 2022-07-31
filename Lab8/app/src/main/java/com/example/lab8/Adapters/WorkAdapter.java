@@ -23,12 +23,10 @@ import java.util.concurrent.TimeUnit;
 
 public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
 
-        private Fragment fragment;
         private ArrayList<Quest> mData = new ArrayList<>();
 
-        public WorkAdapter(ArrayList<Quest> data, Fragment fragment) {
+        public WorkAdapter(ArrayList<Quest> data) {
             mData = data;
-            this.fragment = fragment;
         }
 
         // 建立ViewHolder
@@ -72,14 +70,10 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(MainActivity.activity, InQuestActivity.class);
-                intent.putExtra("ID", FirebaseUtil.QuestStore.get(position).getId());
+                intent.putExtra("ID", mData.get(position).getId());
                 MainActivity.activity.startActivity(intent);
             });
-            if(mData.get(position).isTaken()){
-                holder.itemView.setVisibility(View.INVISIBLE);
-            }else{
-                holder.itemView.setVisibility(View.VISIBLE);
-            }
+
         }
 
         @Override

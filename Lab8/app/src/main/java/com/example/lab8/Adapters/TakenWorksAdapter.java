@@ -70,10 +70,9 @@ public class TakenWorksAdapter extends RecyclerView.Adapter<TakenWorksAdapter.Vi
             holder.PayoffAndLocation.setText(("單次$"+mData.get(position).getPayOff()+" "+mData.get(position).getLocation()));
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
-                Log.d("get", "onBindViewHolder: "+position);
-                Intent intent = new Intent(this.activity, TakenInQuestActivity.class);
-                intent.putExtra("Position",position);
-                MainActivity.activity.startActivity(intent);
+                Intent intent = new Intent(activity, TakenInQuestActivity.class);
+                intent.putExtra("ID",mData.get(position).getId());
+                activity.startActivity(intent);
             });
 //            if(mData.get(position).isTaken()){
 //                holder.itemView.setVisibility(View.INVISIBLE);

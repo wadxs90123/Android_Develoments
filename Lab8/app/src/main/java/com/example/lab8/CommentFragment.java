@@ -8,18 +8,25 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.lab8.Adapters.WorkAdapter;
 import com.example.lab8.databinding.FragmentCommentBinding;
-import com.example.lab8.databinding.FragmentWorkBinding;
+import com.example.lab8.models.Message;
+import com.example.lab8.models.Quest;
+
+import java.util.ArrayList;
 
 public class CommentFragment extends Fragment {
 
     private CommentViewModel mViewModel;
-
+    static RecyclerView recycler_view;
+    public static boolean flag = false;
     public static CommentFragment newInstance() {
         return new CommentFragment();
     }
@@ -33,7 +40,37 @@ public class CommentFragment extends Fragment {
         binding.setData(mViewModel);
         binding.setLifecycleOwner(getActivity());
         //Data Binding
+        flag = true;
+
+        recycler_view = (RecyclerView) binding.Chatter;
+        // 設置RecyclerView為列表型態
+        recycler_view.setLayoutManager(new LinearLayoutManager(recycler_view.getContext()));
+        setup();
+
 
         return binding.getRoot();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        flag = false;
+    }
+
+    public static void setup(){
+        if(!flag){return;}
+
+        // 設置格線
+        // recycler_view.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        ArrayList<Message> messages = new ArrayList<>();
+        for(Message m : FirebaseUtil.MessageStore){
+            if(m.getReceiver().equals(FirebaseUtil.loginUsername)||m.getSender().equals(FirebaseUtil.loginUsername)){
+                messages.add(m);
+            }
+        }
+        // 將資料交給adapter
+//        CommentAdapter commentAdapter = new CommentAdapter(messages);
+        // 設置adapter給recycler_view
+//        recycler_view.setAdapter(commentAdapter);
     }
 }

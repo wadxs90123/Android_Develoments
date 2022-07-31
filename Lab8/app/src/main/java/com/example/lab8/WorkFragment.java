@@ -18,18 +18,22 @@ import android.view.ViewGroup;
 
 import com.example.lab8.Adapters.WorkAdapter;
 import com.example.lab8.databinding.FragmentWorkBinding;
+import com.example.lab8.models.Quest;
+
+import java.util.ArrayList;
 
 public class WorkFragment extends Fragment {
 
     private WorkViewModel mViewModel;
-    private WorkAdapter workAdapter;
-    RecyclerView recycler_view;
+    static RecyclerView recycler_view;
     //ArrayList<Quest> mData = new ArrayList<>();
+
 
     public static WorkFragment newInstance() {
         return new WorkFragment();
     }
 
+    public static boolean flag = false;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
@@ -39,7 +43,7 @@ public class WorkFragment extends Fragment {
         binding.setData(mViewModel);
         binding.setLifecycleOwner(getActivity());
         //Data Binding
-
+        flag = true;
         //AddQuestButton
         binding.addQuestButton.setOnClickListener(view -> {
             Intent AddQuest = new Intent(getActivity(), AddQuestActivity.class);
@@ -47,8 +51,10 @@ public class WorkFragment extends Fragment {
         });
 
         //
-
-
+        recycler_view = (RecyclerView) binding.WorkRecycler;
+        // 設置RecyclerView為列表型態
+        recycler_view.setLayoutManager(new LinearLayoutManager(recycler_view.getContext()));
+        setup();
         //String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String PayMethod,String Date
         // 準備資料，塞50個項目到ArrayList裡
 //        for(int i = 0; i < 50; i++) {
@@ -58,18 +64,30 @@ public class WorkFragment extends Fragment {
 //            mData.add(q);
 //        }
         // 連結元件
-        recycler_view = (RecyclerView) binding.WorkRecycler;
-        // 設置RecyclerView為列表型態
-        recycler_view.setLayoutManager(new LinearLayoutManager(getContext()));
-        // 設置格線
-       // recycler_view.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
 
-        // 將資料交給adapter
-        workAdapter = new WorkAdapter(FirebaseUtil.QuestStore,this);
-        // 設置adapter給recycler_view
-        recycler_view.setAdapter(workAdapter);
 
         return binding.getRoot();
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        flag = false;
+    }
+    public static void setup(){
+        if(!flag){return;}
+
+        // 設置格線
+        // recycler_view.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        ArrayList<Quest> quests = new ArrayList<>();
+        for(Quest q : FirebaseUtil.QuestStore){
+            if(!q.isTaken()){
+                quests.add(q);
+            }
+        }
+        // 將資料交給adapter
+        WorkAdapter workAdapter = new WorkAdapter(quests);
+        // 設置adapter給recycler_view
+        recycler_view.setAdapter(workAdapter);
+    }
 }
