@@ -3,7 +3,6 @@ package com.example.lab8.Adapters;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lab8.MainActivity;
 import com.example.lab8.PosterInQuestActivity;
 import com.example.lab8.R;
 import com.example.lab8.models.Quest;
@@ -43,7 +41,7 @@ public class PostWorksAdapter extends RecyclerView.Adapter<PostWorksAdapter.View
             ViewHolder(View itemView) {
                 super(itemView);
                 cardView = itemView.findViewById(R.id.cardView);
-                QuestName = itemView.findViewById(R.id.QuestName);
+                QuestName = itemView.findViewById(R.id.ChatterName);
                 QuestPoster = itemView.findViewById(R.id.QuestPoster);
                 PayoffAndLocation = itemView.findViewById(R.id.PayOffAndLocation);
                 Date = itemView.findViewById(R.id.Date);

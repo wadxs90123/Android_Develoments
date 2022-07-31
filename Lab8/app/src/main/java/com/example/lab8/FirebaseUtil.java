@@ -39,6 +39,7 @@ public class FirebaseUtil {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     MessageStore.add(ds.getValue(Message.class));
                 }
+
                 MessageActivity.setup();
             }
 
@@ -60,7 +61,7 @@ public class FirebaseUtil {
                             for(DataSnapshot ds : snapshot.getChildren()){
                                 QuestStore.add(ds.getValue(Quest.class));
                             }
-                            WorkFragment.setup();
+                           // WorkFragment.setup();
                         }
 
                         @Override

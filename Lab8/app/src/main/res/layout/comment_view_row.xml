@@ -22,7 +22,7 @@
             android:background="#FBF4B7">
 
             <TextView
-                android:id="@+id/QuestName"
+                android:id="@+id/ChatterName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="王先生"

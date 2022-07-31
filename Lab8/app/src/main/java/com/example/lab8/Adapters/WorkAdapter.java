@@ -2,17 +2,14 @@ package com.example.lab8.Adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.lab8.FirebaseUtil;
 import com.example.lab8.InQuestActivity;
 import com.example.lab8.MainActivity;
 import com.example.lab8.R;
@@ -42,7 +39,7 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             ViewHolder(View itemView) {
                 super(itemView);
                 cardView = itemView.findViewById(R.id.cardView);
-                QuestName = itemView.findViewById(R.id.QuestName);
+                QuestName = itemView.findViewById(R.id.ChatterName);
                 QuestPoster = itemView.findViewById(R.id.QuestPoster);
                 PayoffAndLocation = itemView.findViewById(R.id.PayOffAndLocation);
                 Date = itemView.findViewById(R.id.Date);
