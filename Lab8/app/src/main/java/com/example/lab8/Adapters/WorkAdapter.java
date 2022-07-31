@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lab8.FirebaseUtil;
 import com.example.lab8.InQuestActivity;
 import com.example.lab8.MainActivity;
 import com.example.lab8.R;
@@ -25,13 +26,13 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
         private Fragment fragment;
         private ArrayList<Quest> mData = new ArrayList<>();
 
-        WorkAdapter(ArrayList<Quest> data,Fragment fragment) {
+        public WorkAdapter(ArrayList<Quest> data, Fragment fragment) {
             mData = data;
             this.fragment = fragment;
         }
 
         // 建立ViewHolder
-        class ViewHolder extends RecyclerView.ViewHolder{
+        static class ViewHolder extends RecyclerView.ViewHolder{
             // 宣告元件
             private CardView cardView;
             private TextView QuestName;
@@ -70,9 +71,8 @@ public class WorkAdapter extends RecyclerView.Adapter<WorkAdapter.ViewHolder>{
             holder.PayoffAndLocation.setText(("單次$"+mData.get(position).getPayOff()+" "+mData.get(position).getLocation()));
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
-                Log.d("get", "onBindViewHolder: "+position);
                 Intent intent = new Intent(MainActivity.activity, InQuestActivity.class);
-                intent.putExtra("Position",position);
+                intent.putExtra("ID", FirebaseUtil.QuestStore.get(position).getId());
                 MainActivity.activity.startActivity(intent);
             });
             if(mData.get(position).isTaken()){

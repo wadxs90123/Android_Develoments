@@ -61,7 +61,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:textColor="#9B998B"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/imageBack"
             app:layout_constraintEnd_toEndOf="parent"
@@ -79,6 +79,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/sendButton"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="4dp"

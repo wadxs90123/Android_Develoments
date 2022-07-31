@@ -25,7 +25,7 @@ public class TakenWorksAdapter extends RecyclerView.Adapter<TakenWorksAdapter.Vi
         private Activity activity;
         private ArrayList<Quest> mData = new ArrayList<>();
 
-        TakenWorksAdapter(ArrayList<Quest> data, Activity activity) {
+        public TakenWorksAdapter(ArrayList<Quest> data, Activity activity) {
             mData = data;
             this.activity = activity;
         }

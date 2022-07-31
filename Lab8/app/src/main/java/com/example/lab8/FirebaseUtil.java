@@ -23,6 +23,7 @@ public class FirebaseUtil {
 
     public static DatabaseReference users = FirebaseDatabase.getInstance().getReference("Users");
 
+    public static DatabaseReference messages = FirebaseDatabase.getInstance().getReference("Messages");
 //    public static ArrayList<Quest> PostQuestStore = new ArrayList<>();
 //    public static ArrayList<Quest> TakenQuestStore = new ArrayList<>();
     public static ArrayList<Message> MessageStore = new ArrayList<>();
@@ -30,6 +31,20 @@ public class FirebaseUtil {
     public static ArrayList<Quest> QuestStore = new ArrayList<>();
 
     public static void ListenerStart(){
+        messages.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                MessageStore.clear();
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    MessageStore.add(ds.getValue(Message.class));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -43,19 +58,6 @@ public class FirebaseUtil {
                             for(DataSnapshot ds : snapshot.getChildren()){
 
                                 QuestStore.add(ds.getValue(Quest.class));
-                            }
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
-                    users.child(ds.getValue(User.class).getUsername()).child("message").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot ds : snapshot.getChildren()){
-                                MessageStore.add(ds.getValue(Message.class));
                             }
                         }
 
@@ -80,15 +82,10 @@ public class FirebaseUtil {
         }
         return null;
     }
-    public static void sendMessage(String Receiver,String msg){
-        DatabaseReference ref = users.child(loginUsername).child("message").child(Receiver);
-        for(Message m : MessageStore){
-            if(m.getSender().equals(loginUsername)&&m.getReceiver().equals(Receiver)){
-                m.getMessages().add(msg);
-                ref.setValue(m);
-                return;
-            }
-        }
+    public static void sendMessage(String sender, String receiver, String msg){
+        String id = messages.push().getKey();
+        Message message = new Message(id,sender,receiver,msg);
+        messages.child(id).setValue(message);
     }
     public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
         DatabaseReference ref = users.child(PosterName).child("Quests");

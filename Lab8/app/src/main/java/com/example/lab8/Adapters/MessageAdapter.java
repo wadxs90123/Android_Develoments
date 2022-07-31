@@ -1,35 +1,111 @@
-//package com.example.lab8.Adapters;
-//
-//import android.annotation.SuppressLint;
-//import android.app.Activity;
-//import android.content.Intent;
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.TextView;
-//
-//import androidx.cardview.widget.CardView;
-//import androidx.recyclerview.widget.RecyclerView;
-//
-//import com.example.lab8.MainActivity;
-//import com.example.lab8.PosterInQuestActivity;
-//import com.example.lab8.R;
-//import com.example.lab8.models.Quest;
-//
-//import java.util.ArrayList;
-//import java.util.concurrent.TimeUnit;
-//
-//public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHolder>{
-//
-//        private Activity activity;
-//        private ArrayList<String> mData = new ArrayList<>();
-//
-//        MessageAdapter(ArrayList<String> data, Activity activity) {
-//            mData = data;
-//            this.activity = activity;
-//        }
-//
+package com.example.lab8.Adapters;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.lab8.FirebaseUtil;
+import com.example.lab8.MainActivity;
+import com.example.lab8.PosterInQuestActivity;
+import com.example.lab8.R;
+import com.example.lab8.databinding.MessageSenderBinding;
+import com.example.lab8.databinding.ReceivedMessageBinding;
+import com.example.lab8.models.Message;
+import com.example.lab8.models.Quest;
+
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
+
+        private Activity activity;
+        private ArrayList<Message> mData = new ArrayList<>();
+
+        public static final int VIEW_TYPE_SENT=1;
+        public static final int VIEW_TYPE_RECEIVE=2;
+
+        public MessageAdapter(ArrayList<Message> data, Activity activity) {
+            mData = data;
+            this.activity = activity;
+        }
+
+    @NonNull
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            if(viewType == VIEW_TYPE_SENT){
+                return new SentMessageViewHolder(
+                        MessageSenderBinding.inflate(
+                        LayoutInflater.from(parent.getContext()),
+                        parent,
+                        false
+                        )
+                );
+            }else{
+                return new ReceiveMessageViewHolder(
+                        ReceivedMessageBinding.inflate(
+                                LayoutInflater.from(parent.getContext()),
+                                parent,
+                                false
+                        )
+                );
+            }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        if(mData.get(position).getSender().equals(FirebaseUtil.loginUsername)){
+            return VIEW_TYPE_SENT;
+        }else{
+            return VIEW_TYPE_RECEIVE;
+        }
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if(getItemViewType(position)==VIEW_TYPE_SENT){
+            ((SentMessageViewHolder)holder).setData(mData.get(position));
+        }else{
+            ((ReceiveMessageViewHolder)holder).setData(mData.get(position));
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData.size();
+    }
+
+    static class SentMessageViewHolder extends RecyclerView.ViewHolder{
+            private final MessageSenderBinding binding;
+            public SentMessageViewHolder(MessageSenderBinding _binding) {
+                super(_binding.getRoot());
+                binding = _binding;
+            }
+            void setData(Message message){
+                binding.textMessage.setText(message.getMsg());
+                binding.textDataTime.setText(message.getTimestamp());
+            }
+        }
+        static class ReceiveMessageViewHolder extends RecyclerView.ViewHolder{
+            private final ReceivedMessageBinding binding;
+            ReceiveMessageViewHolder(ReceivedMessageBinding _binding) {
+                super(_binding.getRoot());
+                binding = _binding;
+            }
+            void setData(Message message){
+                binding.textMessage.setText(message.getMsg());
+                binding.textDataTime.setText(message.getTimestamp());
+            }
+        }
+
 //
 //        // 建立ViewHolder
 //        class ViewHolderSender extends RecyclerView.ViewHolder{
@@ -113,4 +189,4 @@
 //        public int getItemCount() {
 //            return mData.size();
 //        }
-//}
+}

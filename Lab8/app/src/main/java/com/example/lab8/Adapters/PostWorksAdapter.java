@@ -25,7 +25,7 @@ public class PostWorksAdapter extends RecyclerView.Adapter<PostWorksAdapter.View
         private Activity activity;
         private ArrayList<Quest> mData = new ArrayList<>();
 
-        PostWorksAdapter(ArrayList<Quest> data, Activity activity) {
+        public PostWorksAdapter(ArrayList<Quest> data, Activity activity) {
             mData = data;
             this.activity = activity;
         }

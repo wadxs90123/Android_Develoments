@@ -17,8 +17,9 @@ public class InQuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_in_quest);
         ActivityInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_in_quest);
-        int position = getIntent().getIntExtra("Position",0);
-        Quest quest = FirebaseUtil.QuestStore.get(position);
+        String id = getIntent().getStringExtra("ID");
+        Quest quest = FirebaseUtil.getQuest(id);
+
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
         binding.inQuestPayoffText.setText("$"+quest.getPayOff());
