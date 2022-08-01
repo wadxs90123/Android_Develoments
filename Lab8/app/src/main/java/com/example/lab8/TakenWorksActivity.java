@@ -22,6 +22,8 @@ public class TakenWorksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taken_works);
+        setTitle("我應徵的工作們");
+
         ActivityTakenWorksBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_taken_works);
         binding.button7.setOnClickListener(view->{
             Intent intent = new Intent(this,MainActivity.class);

@@ -24,7 +24,7 @@ public class AddQuestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("發布任務");
+        setTitle("發布工作");
 
         activity = this;
         setContentView(R.layout.activity_add_quest);

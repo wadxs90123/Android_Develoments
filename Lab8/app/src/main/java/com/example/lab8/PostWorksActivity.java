@@ -24,6 +24,9 @@ public class PostWorksActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_works);
+
+        setTitle("我發布的工作們");
+
         //Data Binding
         ActivityPostWorksBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_post_works);
         //binding.UserName.setText(FirebaseUtil.loginUsername);

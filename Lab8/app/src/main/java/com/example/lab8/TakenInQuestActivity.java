@@ -30,7 +30,7 @@ public class TakenInQuestActivity extends AppCompatActivity   {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_taken_in_quest);
         ActivityTakenInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_taken_in_quest);
-
+        setTitle("工作內容");
         String ID = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(ID);
         binding.PosterName.setText(quest.getPosterName());

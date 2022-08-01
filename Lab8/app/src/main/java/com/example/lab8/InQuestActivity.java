@@ -21,6 +21,8 @@ public class InQuestActivity extends AppCompatActivity {
         ActivityInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_in_quest);
         String id = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(id);
+        setTitle("工作內容");
+
         DecimalFormat decimalFormat = new DecimalFormat("###.##");
         String Lat_s = decimalFormat.format(quest.getLat());
         String Lon_s = decimalFormat.format(quest.getLon());

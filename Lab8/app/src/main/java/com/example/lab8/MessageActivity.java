@@ -32,6 +32,8 @@ public class MessageActivity extends AppCompatActivity {
         flag = true;
         setContentView(R.layout.activity_message);
         ActivityMessageBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_message);
+        setTitle("聊天室");
+
         String ID = getIntent().getStringExtra("ID");
         PosterName = getIntent().getStringExtra("Name");
 

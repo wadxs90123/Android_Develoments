@@ -19,6 +19,8 @@ public class PosterInQuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster_in_quest);
         ActivityPosterInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_poster_in_quest);
+        setTitle("工作內容");
+
         String ID = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(ID);
 
