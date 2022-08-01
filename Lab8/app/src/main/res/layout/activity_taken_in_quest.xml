@@ -28,79 +28,29 @@
             app:layout_constraintVertical_bias="0.105" />
 
         <TextView
-            android:id="@+id/textView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="地點"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.455" />
-
-        <TextView
-            android:id="@+id/textView18"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="時間"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.11"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.25" />
-
-        <TextView
             android:id="@+id/textView19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="日期"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline20"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.107"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.075" />
-
-        <TextView
-            android:id="@+id/InQuestLocationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:text="地點"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.451" />
-
-        <TextView
-            android:id="@+id/inQuestTimeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:text="地點"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.409" />
 
         <TextView
             android:id="@+id/inQuestDateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="12dp"
             android:text="地點"
             android:textSize="24sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline20"
+            app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.075" />
+            app:layout_constraintVertical_bias="0.409" />
 
         <TextView
             android:id="@+id/textView12"
@@ -113,20 +63,20 @@
             app:layout_constraintHorizontal_bias="0.183"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
-            app:layout_constraintVertical_bias="0.763" />
+            app:layout_constraintVertical_bias="0.886" />
 
         <TextView
             android:id="@+id/InQuestTitleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="108dp"
+            android:layout_marginStart="12dp"
             android:text="標題"
             android:textAlignment="textStart"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="@+id/guideline6"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintVertical_bias="0.13" />
 
         <TextView
             android:id="@+id/PosterName"
@@ -146,25 +96,25 @@
             android:id="@+id/inQuestContentText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="108dp"
+            android:layout_marginStart="12dp"
             android:text="標題"
             android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline5"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView10"
             app:layout_constraintTop_toTopOf="@+id/guideline6"
-            app:layout_constraintVertical_bias="0.68" />
+            app:layout_constraintVertical_bias="0.753" />
 
         <TextView
             android:id="@+id/inQuestPayoffText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="104dp"
+            android:layout_marginStart="12dp"
             android:text="標題"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
-            app:layout_constraintVertical_bias="0.103" />
+            app:layout_constraintVertical_bias="0.113" />
 
         <TextView
             android:id="@+id/textView8"
@@ -190,14 +140,14 @@
             app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline6"
-            app:layout_constraintVertical_bias="0.673" />
+            app:layout_constraintVertical_bias="0.734" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.32" />
+            app:layout_constraintGuide_percent="0.27" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
@@ -211,7 +161,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.41" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.5" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.8" />
 
         <Button
             android:id="@+id/AskButton"
@@ -272,6 +236,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
             app:layout_constraintVertical_bias="0.834" />
+
+
+        <FrameLayout
+            android:id="@+id/fragment"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline20"
+            tools:context=".TakenInQuestActivity"/>
+        <!--        <androidx.fragment.app.FragmentContainerView-->
+<!--            android:id="@+id/maps"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:name="com.google.android.gms.maps.SupportMapFragment"-->
+<!--            app:layout_constraintBottom_toTopOf="@+id/guideline23"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintLeft_toLeftOf="parent"-->
+
+<!--            app:layout_constraintRight_toRightOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="@+id/guideline20"-->
+<!--        />-->
+<!--                    tools:layout="@layout/map" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

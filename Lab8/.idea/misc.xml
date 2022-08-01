@@ -17,15 +17,18 @@
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_post_works.xml" value="0.34074074074074073" />
         <entry key="app/src/main/res/layout/activity_poster_in_quest.xml" value="0.34205128205128205" />
-        <entry key="app/src/main/res/layout/activity_taken_in_quest.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_taken_in_quest.xml" value="0.1729957805907173" />
         <entry key="app/src/main/res/layout/activity_taken_works.xml" value="0.25" />
         <entry key="app/src/main/res/layout/comment_view_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_quest.xml" value="0.22" />
         <entry key="app/src/main/res/layout/fragment_comment.xml" value="0.34739583333333335" />
         <entry key="app/src/main/res/layout/fragment_in_quest.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.328125" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_person.xml" value="0.3296875" />
         <entry key="app/src/main/res/layout/fragment_work.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/map.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/message_sender.xml" value="0.33" />
         <entry key="app/src/main/res/layout/message_view_row.xml" value="0.2" />
         <entry key="app/src/main/res/layout/received_message.xml" value="0.67" />

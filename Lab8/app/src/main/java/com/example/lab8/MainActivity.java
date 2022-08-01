@@ -1,5 +1,6 @@
 package com.example.lab8;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -10,6 +11,8 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import com.example.lab8.models.User;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this,navController,appBarConfiguration);
         NavigationUI.setupWithNavController(bottomNavigationView,navController);//將導航和下面的那排按鈕們結合
 
+
     }
 
     @Override
@@ -43,9 +47,6 @@ public class MainActivity extends AppCompatActivity {
 
         NavController controller = fragment.getNavController();
         return controller.navigateUp();
-    }
-    public static void setUser(User u){
-        user = u;
     }
 
 }
