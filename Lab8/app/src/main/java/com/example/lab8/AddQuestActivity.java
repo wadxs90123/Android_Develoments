@@ -29,6 +29,14 @@ public class AddQuestActivity extends AppCompatActivity {
         activity = this;
         setContentView(R.layout.activity_add_quest);
         ActivityAddQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_add_quest);
+
+        binding.questTitleInput.setText(getIntent().getStringExtra("Title"));
+        binding.questTitleInput2.setText(getIntent().getStringExtra("Content"));
+        binding.editTextNumber.setText(getIntent().getStringExtra("Money"));
+        binding.timePicker1.setText(getIntent().getStringExtra("Date1"));
+        binding.timePicker2.setText(getIntent().getStringExtra("Date2"));
+        binding.timePicker.setText(getIntent().getStringExtra("Time"));
+
         double Lat = getIntent().getDoubleExtra("Lat",0);
         double Lon = getIntent().getDoubleExtra("Lon",0);
         DecimalFormat decimalFormat = new DecimalFormat("###.##");
@@ -53,6 +61,14 @@ public class AddQuestActivity extends AppCompatActivity {
 
         binding.chooseMap.setOnClickListener(view->{
             Intent intent = new Intent(this,ChooseLocationActivity.class);
+            intent.putExtra("Lat", Lat);
+            intent.putExtra("Lon",Lon);
+            intent.putExtra("Title",binding.questTitleInput.getText().toString());
+            intent.putExtra("Content",binding.questTitleInput2.getText().toString());
+            intent.putExtra("Money",binding.editTextNumber.getText().toString());
+            intent.putExtra("Date1",binding.timePicker1.getText().toString());
+            intent.putExtra("Date2",binding.timePicker2.getText().toString());
+            intent.putExtra("Time",binding.timePicker.getText().toString());
             startActivity(intent);
         });
         binding.AddQuest.setOnClickListener(view -> {

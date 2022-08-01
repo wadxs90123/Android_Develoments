@@ -52,16 +52,42 @@ public class ChooseLocationActivity extends AppCompatActivity implements OnMapRe
     LatLng mLastLocation;
     Marker mCurrLocationMarker;
 
+    String Title;
+    String Content;
+    String Money;
+    String Date1;
+    String Date2;
+    String Time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_location);
 
-        getSupportActionBar().setTitle("選取地點");
+        setTitle("選取地點");
+
+        Title = getIntent().getStringExtra("Title");
+        Content = getIntent().getStringExtra("Content");
+        Money = getIntent().getStringExtra("Money");
+        Date1 = getIntent().getStringExtra("Date1");
+        Date2 = getIntent().getStringExtra("Date2");
+        Time = getIntent().getStringExtra("Time");
+
 
         findViewById(R.id.backButtonInMap).setOnClickListener(view -> {
+
             Intent intent = new Intent(this,AddQuestActivity.class);
+            intent.putExtra("Lat", getIntent().getDoubleExtra("Lat",0));
+            intent.putExtra("Lon",getIntent().getDoubleExtra("Lon",0));
+
+            intent.putExtra("Title", Title);
+            intent.putExtra("Content", Content);
+            intent.putExtra("Money", Money);
+            intent.putExtra("Date1", Date1);
+            intent.putExtra("Date2", Date2);
+            intent.putExtra("Time", Time);
+
             startActivity(intent);
         });
         findViewById(R.id.VerifyButton).setOnClickListener(view->{
@@ -70,6 +96,13 @@ public class ChooseLocationActivity extends AppCompatActivity implements OnMapRe
             Intent intent = new Intent(this,AddQuestActivity.class);
             intent.putExtra("Lat", mLastLocation.latitude);
             intent.putExtra("Lon",mLastLocation.longitude);
+
+            intent.putExtra("Title", Title);
+            intent.putExtra("Content", Content);
+            intent.putExtra("Money", Money);
+            intent.putExtra("Date1", Date1);
+            intent.putExtra("Date2", Date2);
+            intent.putExtra("Time", Time);
 
             Toast.makeText(this,"位置資料更新成功",Toast.LENGTH_SHORT).show();
             startActivity(intent);
