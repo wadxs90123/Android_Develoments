@@ -48,6 +48,9 @@ public class PersonFragment extends Fragment {
         binding.button5.setOnClickListener(view->{
             Intent intent = new Intent(MainActivity.activity,LoginActivity.class);
             startActivity(intent);
+
+            FirebaseUtil.logout(FirebaseUtil.loginUsername);
+
             Toast.makeText(MainActivity.activity.getApplicationContext(),"登出成功!",Toast.LENGTH_SHORT).show();
         });
 

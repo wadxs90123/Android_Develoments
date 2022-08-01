@@ -22,6 +22,8 @@ public class FirebaseUtil {
 
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
 
+    public static DatabaseReference Online = FirebaseDatabase.getInstance().getReference("Online");
+
     public static DatabaseReference users = FirebaseDatabase.getInstance().getReference("Users");
     public static DatabaseReference quests = FirebaseDatabase.getInstance().getReference("Quest");
 
@@ -31,8 +33,25 @@ public class FirebaseUtil {
     public static ArrayList<Message> MessageStore = new ArrayList<>();
     public static ArrayList<User> UserStore = new ArrayList<>();
     public static ArrayList<Quest> QuestStore = new ArrayList<>();
+    public static ArrayList<String> Onlines = new ArrayList<>();
 
     public static void ListenerStart(){
+        Online.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Onlines.clear();
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    if(ds.getValue(String.class).equals("active")){
+                        Onlines.add(ds.getKey());
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         messages.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -78,6 +97,16 @@ public class FirebaseUtil {
 
             }
         });
+    }
+    public static boolean isOnline(String Username){
+        return Onlines.contains(Username);
+    }
+    public static void login(String Username){
+        Online.child(Username).setValue("active");
+    }
+    public static void logout(String Username){
+        Online.child(Username).setValue("inactive");
+        FirebaseUtil.loginUsername = null;
     }
     public static Quest getQuest(String ID){
         for(Quest q : QuestStore){
