@@ -1,7 +1,10 @@
 package com.example.lab8.models;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 public class Message {
     private String id;
@@ -17,7 +20,9 @@ public class Message {
         this.Receiver = Receiver;
         this.Sender = Sender;
         this.msg = msg;
-        timestamp = new Timestamp(System.currentTimeMillis()).toString();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        timestamp = format.format(new Timestamp(new Date().getTime()));
+
     }
 
     public String getId() {
