@@ -19,6 +19,7 @@ public class TakenInQuestActivity extends AppCompatActivity {
 
         String ID = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(ID);
+        binding.PosterName.setText(quest.getPosterName());
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
         binding.inQuestPayoffText.setText("$"+quest.getPayOff());
@@ -41,7 +42,12 @@ public class TakenInQuestActivity extends AppCompatActivity {
         });
         binding.TakeQuest.setOnClickListener(view -> {//實際上是刪除 我懶的改...
             FirebaseUtil.QuitQuest(quest);
-            Intent intent = new Intent(this,PostWorksActivity.class);
+            Intent intent = new Intent(this,TakenWorksActivity.class);
+            startActivity(intent);
+        });
+        binding.button8.setOnClickListener(view -> {
+            FirebaseUtil.deleteQuest(quest);
+            Intent intent = new Intent(this,TakenWorksActivity.class);
             startActivity(intent);
         });
     }

@@ -4,4 +4,5 @@
     <string name="TimePickerLabel">請選擇時間</string>
     <string name="floatingimage">FloatingImage</string>
     <string name="type_a_message">請輸入訊息</string>
+    <string name="Version">Ver.1.2</string>
 </resources>

@@ -30,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
             if(FirebaseUtil.isUserExist(username)){
                 if(FirebaseUtil.getUser(username).getPassword().equals(password)) {
                     FirebaseUtil.loginUsername = username;
+
                     Toast.makeText(getApplicationContext(), "歡迎使用垃圾通, " + username, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);

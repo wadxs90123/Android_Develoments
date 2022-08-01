@@ -23,6 +23,7 @@ public class FirebaseUtil {
     public static FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     public static DatabaseReference users = FirebaseDatabase.getInstance().getReference("Users");
+    public static DatabaseReference quests = FirebaseDatabase.getInstance().getReference("Quest");
 
     public static DatabaseReference messages = FirebaseDatabase.getInstance().getReference("Messages");
 //    public static ArrayList<Quest> PostQuestStore = new ArrayList<>();
@@ -39,6 +40,7 @@ public class FirebaseUtil {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     MessageStore.add(ds.getValue(Message.class));
                 }
+                CommentFragment.setup();
 
                 MessageActivity.setup();
             }
@@ -52,25 +54,25 @@ public class FirebaseUtil {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 UserStore.clear();
-                QuestStore.clear();
-                for(DataSnapshot ds : snapshot.getChildren()){
+                for(DataSnapshot ds:snapshot.getChildren()){
                     UserStore.add(ds.getValue(User.class));
-                    users.child(ds.getValue(User.class).getUsername()).child("Quests").addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-                            for(DataSnapshot ds : snapshot.getChildren()){
-                                QuestStore.add(ds.getValue(Quest.class));
-                            }
-                           // WorkFragment.setup();
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 }
             }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        quests.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                QuestStore.clear();
+                for(DataSnapshot ds: snapshot.getChildren()){
+                    QuestStore.add(ds.getValue(Quest.class));
+                }
+                WorkFragment.setup();
+            }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
@@ -91,11 +93,10 @@ public class FirebaseUtil {
         messages.child(id).setValue(message);
     }
     public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
-        DatabaseReference ref = users.child(PosterName).child("Quests");
-        String id = ref.push().getKey();
+        String id = quests.push().getKey();
         Quest quest = new Quest(id, PosterName,null,QuestName,Payoff,Content,Location,Date,time);
         //getUser(PosterName).getPostQuests().add(quest);
-        ref.child(id).setValue(quest);
+        quests.child(id).setValue(quest);
     }
     public static void AdaptQuest(Quest quest){//應徵任務
         if(quest.isTaken()){
@@ -107,17 +108,16 @@ public class FirebaseUtil {
             }
             quest.setTaken(true);
             quest.setReceiverName(loginUsername);
-            DatabaseReference ref = users.child(quest.getPosterName()).child("Quests").child(quest.getId());
-            ref.setValue(quest);
+            quests.child(quest.getId()).setValue(quest);
         }
     }
     public static void QuitQuest(Quest quest){
         quest.setReceiverName(null);
         quest.setTaken(false);
-        users.child(quest.getPosterName()).child("Quests").child(quest.getId()).setValue(quest);
+        quests.child(quest.getId()).setValue(quest);
     }
     public static void deleteQuest(Quest quest){
-        users.child(quest.getPosterName()).child("Quests").child(quest.getId()).removeValue();
+        quests.child(quest.getId()).removeValue();
     }
     public static void addUser(String username,String password){
         User user = new User(username,password);

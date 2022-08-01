@@ -43,6 +43,9 @@ public class MessageActivity extends AppCompatActivity {
             startActivity(intent);
         });
         binding.sendButton.setOnClickListener(view -> {
+            if(binding.inputMessage.getText()==null||binding.inputMessage.getText().toString().equals("")){
+                return;
+            }
             FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,PosterName,binding.inputMessage.getText().toString());
             binding.inputMessage.setText(null);
         });

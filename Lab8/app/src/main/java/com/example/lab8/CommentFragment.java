@@ -51,30 +51,30 @@ public class CommentFragment extends Fragment {
         recycler_view = (RecyclerView) binding.Chatter;
         // 設置RecyclerView為列表型態
         recycler_view.setLayoutManager(new LinearLayoutManager(recycler_view.getContext()));
-        //setup();
+        setup();
 
-        ArrayList<Message> messages = new ArrayList<>();
-        Set<String> Name = new HashSet<>();
-
-        for(Message m : FirebaseUtil.MessageStore){
-            if(m.getReceiver().equals(FirebaseUtil.loginUsername)){
-                if(!Name.contains(m.getSender())){
-                    messages.add(m);
-                    Name.add(m.getSender());
-                }
-            }
-            if(m.getSender().equals(FirebaseUtil.loginUsername)){
-                if(!Name.contains(m.getReceiver())){
-                    messages.add(m);
-                    Name.add(m.getReceiver());
-                }
-            }
-        }
-
-        // 將資料交給adapter
-        CommentAdapter commentAdapter = new CommentAdapter(messages);
-        // 設置adapter給recycler_view
-        recycler_view.setAdapter(commentAdapter);
+//        ArrayList<Message> messages = new ArrayList<>();
+//        Set<String> Name = new HashSet<>();
+//
+//        for(Message m : FirebaseUtil.MessageStore){
+//            if(m.getReceiver().equals(FirebaseUtil.loginUsername)){
+//                if(!Name.contains(m.getSender())){
+//                    messages.add(m);
+//                    Name.add(m.getSender());
+//                }
+//            }
+//            if(m.getSender().equals(FirebaseUtil.loginUsername)){
+//                if(!Name.contains(m.getReceiver())){
+//                    messages.add(m);
+//                    Name.add(m.getReceiver());
+//                }
+//            }
+//        }
+//
+//        // 將資料交給adapter
+//        CommentAdapter commentAdapter = new CommentAdapter(messages);
+//        // 設置adapter給recycler_view
+//        recycler_view.setAdapter(commentAdapter);
         return binding.getRoot();
     }
 

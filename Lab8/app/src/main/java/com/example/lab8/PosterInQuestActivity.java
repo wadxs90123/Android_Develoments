@@ -19,6 +19,7 @@ public class PosterInQuestActivity extends AppCompatActivity {
 
         String ID = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(ID);
+        binding.TakenName.setText(quest.getReceiverName());
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
         binding.inQuestPayoffText.setText("$"+quest.getPayOff());

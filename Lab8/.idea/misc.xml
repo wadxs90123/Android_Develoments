@@ -17,7 +17,7 @@
         <entry key="app/src/main/res/layout/activity_message.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_post_works.xml" value="0.34074074074074073" />
         <entry key="app/src/main/res/layout/activity_poster_in_quest.xml" value="0.34205128205128205" />
-        <entry key="app/src/main/res/layout/activity_taken_in_quest.xml" value="0.159375" />
+        <entry key="app/src/main/res/layout/activity_taken_in_quest.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_taken_works.xml" value="0.25" />
         <entry key="app/src/main/res/layout/comment_view_row.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_add_quest.xml" value="0.22" />

@@ -1,6 +1,8 @@
 package com.example.lab8;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import java.util.Calendar;
@@ -13,9 +15,11 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 import com.example.lab8.databinding.ActivityAddQuestBinding;
 public class AddQuestActivity extends AppCompatActivity {
+    Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        activity = this;
         setContentView(R.layout.activity_add_quest);
         ActivityAddQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_add_quest);
         binding.UserName.setText(FirebaseUtil.loginUsername);
@@ -44,7 +48,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
 //            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo));
             FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo),time);
-            Intent intent = new Intent(this,MainActivity.class);
+            Intent intent = new Intent(activity,MainActivity.class);
             startActivity(intent);
         });
     }
@@ -56,7 +60,7 @@ public class AddQuestActivity extends AppCompatActivity {
         new DatePickerDialog(v.getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                String datetime = String.valueOf(year) + "-" + String.valueOf(month) + "-" + String.valueOf(day);
+                String datetime = String.valueOf(year) + "-" + String.valueOf(month+1) + "-" + String.valueOf(day);
                 applydate.setText(datetime);   //取得選定的日期指定給日期編輯框
             }
         }, year, month, day).show();
