@@ -5,6 +5,7 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.example.lab8.databinding.ActivityTakenInQuestBinding;
 import com.example.lab8.models.Quest;
@@ -39,14 +40,19 @@ public class TakenInQuestActivity extends AppCompatActivity {
 //        }
         binding.AskButton.setOnClickListener(view->{
             //TODO AskWindow
+             Intent intent = new Intent(this, MessageActivity.class);
+             intent.putExtra("Name",quest.getPosterName());
+             startActivity(intent);
         });
         binding.TakeQuest.setOnClickListener(view -> {//實際上是刪除 我懶的改...
             FirebaseUtil.QuitQuest(quest);
+            Toast.makeText(getApplicationContext(),"已放棄此任務", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,TakenWorksActivity.class);
             startActivity(intent);
         });
         binding.button8.setOnClickListener(view -> {
             FirebaseUtil.deleteQuest(quest);
+            Toast.makeText(getApplicationContext(),"恭喜!已完成此任務", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,TakenWorksActivity.class);
             startActivity(intent);
         });
