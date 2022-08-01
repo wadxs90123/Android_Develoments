@@ -15,6 +15,7 @@ import com.example.lab8.PosterInQuestActivity;
 import com.example.lab8.R;
 import com.example.lab8.models.Quest;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -61,11 +62,15 @@ public class PostWorksAdapter extends RecyclerView.Adapter<PostWorksAdapter.View
         @SuppressLint("SetTextI18n")
         @Override
         public void onBindViewHolder(ViewHolder holder, int position) {
+            DecimalFormat decimalFormat = new DecimalFormat("###.##");
+            String Lat_s = decimalFormat.format(mData.get(position).getLat());
+            String Lon_s = decimalFormat.format(mData.get(position).getLon());
+            holder.PayoffAndLocation.setText(("單次$"+mData.get(position).getPayOff()+" "+"經緯度("+Lon_s+" , "+Lat_s+")"));
+
             // 設置txtItem要顯示的內容
             holder.QuestName.setText(mData.get(position).getQuestName());
             holder.QuestPoster.setText(mData.get(position).getPosterName());
             holder.Date.setText(mData.get(position).getDate());
-            holder.PayoffAndLocation.setText(("單次$"+mData.get(position).getPayOff()+" "+mData.get(position).getLocation()));
             holder.Time.setText(TimeUnit.MILLISECONDS.toMinutes(System.currentTimeMillis()-mData.get(position).getCurrentTime())+"分鐘前");
             holder.itemView.setOnClickListener(view -> {
                 Intent intent = new Intent(activity, PosterInQuestActivity.class);

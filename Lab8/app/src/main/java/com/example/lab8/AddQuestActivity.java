@@ -5,6 +5,8 @@ import androidx.databinding.DataBindingUtil;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,15 +15,27 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import com.example.lab8.databinding.ActivityAddQuestBinding;
+import com.google.android.gms.maps.model.LatLng;
+
 public class AddQuestActivity extends AppCompatActivity {
     Activity activity;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("發布任務");
+
         activity = this;
         setContentView(R.layout.activity_add_quest);
         ActivityAddQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_add_quest);
+        double Lat = getIntent().getDoubleExtra("Lat",0);
+        double Lon = getIntent().getDoubleExtra("Lon",0);
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
+        String Lat_s = decimalFormat.format(Lat);
+        String Lon_s = decimalFormat.format(Lon);
+        binding.textView17.setText("經緯度("+Lon_s+" , "+Lat_s+")");
+
         binding.UserName.setText(FirebaseUtil.loginUsername);
         binding.PickFromDateImage.setOnClickListener(view -> {
             datePicker(view,binding.timePicker1);
@@ -36,18 +50,23 @@ public class AddQuestActivity extends AppCompatActivity {
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         });
+
+        binding.chooseMap.setOnClickListener(view->{
+            Intent intent = new Intent(this,ChooseLocationActivity.class);
+            startActivity(intent);
+        });
         binding.AddQuest.setOnClickListener(view -> {
             String Poster = binding.UserName.getText().toString();
             String QuestTitleInput = binding.questTitleInput.getText().toString();//標題
             String ContentInput = binding.questTitleInput2.getText().toString();//內容
-            String LocationInput = binding.questTitleInput3.getText().toString();//地點
+            String LocationInput = binding.textView17.getText().toString();//地點
             int ValueInput = Integer.valueOf(binding.editTextNumber.getText().toString());//酬勞
             String DateFrom = binding.timePicker1.getText().toString();
             String DateTo = binding.timePicker2.getText().toString();
             String time = binding.timePicker.getText().toString();
 
 //            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo));
-            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo),time);
+            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,(DateFrom+"-"+DateTo),time,Lat, Lon);
             Intent intent = new Intent(activity,MainActivity.class);
             startActivity(intent);
         });

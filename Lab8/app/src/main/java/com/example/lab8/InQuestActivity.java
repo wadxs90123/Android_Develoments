@@ -9,6 +9,8 @@ import android.os.Bundle;
 import com.example.lab8.databinding.ActivityInQuestBinding;
 import com.example.lab8.models.Quest;
 
+import java.text.DecimalFormat;
+
 
 public class InQuestActivity extends AppCompatActivity {
 
@@ -19,6 +21,10 @@ public class InQuestActivity extends AppCompatActivity {
         ActivityInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_in_quest);
         String id = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(id);
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
+        String Lat_s = decimalFormat.format(quest.getLat());
+        String Lon_s = decimalFormat.format(quest.getLon());
+        binding.InQuestLocationText.setText("經緯度("+Lon_s+" , "+Lat_s+")");
 
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
@@ -26,7 +32,6 @@ public class InQuestActivity extends AppCompatActivity {
         binding.inQuestDateText.setText(quest.getDate());
         binding.inQuestTimeText.setText(quest.getTime());
         binding.inQuestPosterText.setText(quest.getPosterName());
-        binding.InQuestLocationText.setText(quest.getLocation());
 
         if(quest.getPosterName().equals(FirebaseUtil.loginUsername)){
             binding.AskButton.setEnabled(false);

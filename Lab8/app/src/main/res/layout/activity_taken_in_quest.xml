@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:text="地點"
-            android:textSize="24sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline20"
             app:layout_constraintStart_toEndOf="@+id/textView19"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
@@ -181,18 +181,19 @@
             android:id="@+id/AskButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/press_button_shape"
             android:text="線上詢問"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.198"
+            app:layout_constraintHorizontal_bias="0.182"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.834" />
+            app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
         <Button
             android:id="@+id/InQuestBackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/press_button_shape"
             android:text="返回"
             app:layout_constraintBottom_toTopOf="@+id/guideline6"
             app:layout_constraintEnd_toEndOf="parent"
@@ -205,6 +206,7 @@
             android:id="@+id/TakeQuest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@drawable/press_button_shape"
             android:text="放棄任務"
             app:layout_constraintBottom_toTopOf="@+id/guideline6"
             app:layout_constraintEnd_toEndOf="parent"
@@ -225,18 +227,18 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <Button
             android:id="@+id/button8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/press_button_shape"
             android:text="完成任務"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.814"
+            app:layout_constraintHorizontal_bias="0.801"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.834" />
-
+            app:layout_constraintTop_toTopOf="@+id/guideline23" />
 
         <FrameLayout
             android:id="@+id/fragment"

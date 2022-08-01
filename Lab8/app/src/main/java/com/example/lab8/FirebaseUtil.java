@@ -121,9 +121,9 @@ public class FirebaseUtil {
         Message message = new Message(id,sender,receiver,msg);
         messages.child(id).setValue(message);
     }
-    public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
+    public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content ,String Date,String time,double Lat,double Lon){
         String id = quests.push().getKey();
-        Quest quest = new Quest(id, PosterName,null,QuestName,Payoff,Content,Location,Date,time);
+        Quest quest = new Quest(id, PosterName,null,QuestName,Payoff,Content,Date,time,Lat,Lon);
         //getUser(PosterName).getPostQuests().add(quest);
         quests.child(id).setValue(quest);
     }

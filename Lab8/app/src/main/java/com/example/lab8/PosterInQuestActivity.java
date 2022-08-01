@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.example.lab8.databinding.ActivityPosterInQuestBinding;
 import com.example.lab8.models.Quest;
 
+import java.text.DecimalFormat;
+
 public class PosterInQuestActivity extends AppCompatActivity {
 
     @Override
@@ -17,16 +19,21 @@ public class PosterInQuestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poster_in_quest);
         ActivityPosterInQuestBinding binding = DataBindingUtil.setContentView(this,R.layout.activity_poster_in_quest);
-
         String ID = getIntent().getStringExtra("ID");
         Quest quest = FirebaseUtil.getQuest(ID);
+
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
+        String Lat_s = decimalFormat.format(quest.getLat());
+        String Lon_s = decimalFormat.format(quest.getLon());
+        binding.InQuestLocationText.setText("經緯度("+Lon_s+" , "+Lat_s+")");
+
         binding.TakenName.setText(quest.getReceiverName());
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
         binding.inQuestPayoffText.setText("$"+quest.getPayOff());
         binding.inQuestDateText.setText(quest.getDate());
         binding.inQuestTimeText.setText(quest.getTime());
-        binding.InQuestLocationText.setText(quest.getLocation());
+        
 
         binding.InQuestBackButton.setOnClickListener(view -> {
             Intent intent = new Intent(this,PostWorksActivity.class);

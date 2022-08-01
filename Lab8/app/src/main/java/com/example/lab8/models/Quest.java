@@ -16,29 +16,30 @@ public class Quest {
     private String ReceiverName;
 
     private boolean isTaken;//是否被接取了
-
+    private double Lat;
+    private double Lon;
     private String id;
     private String QuestName;
     private int PayOff;
     private String Content;
-    private String Location;
     private String Date;
     private Long currentTime;
     private String time;
 
     public Quest(){}
-    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Location,String Date,String time){
+    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Date,String time,double Lat,double Lon){
         this.id = id;
         this.PosterName = PosterName;
         this.ReceiverName = ReceiverName;
         this.QuestName = QuestName;
         this.PayOff = Payoff;
         this.Content = Content;
-        this.Location = Location;
         this.Date = Date;
         this.time = time;
         this.isTaken = false;
         currentTime = System.currentTimeMillis();
+        this.Lat = Lat;
+        this.Lon = Lon;
     }
 
     public String getId() {
@@ -97,14 +98,21 @@ public class Quest {
         Content = content;
     }
 
-    public String getLocation() {
-        return Location;
+    public double getLat() {
+        return Lat;
     }
 
-    public void setLocation(String location) {
-        Location = location;
+    public void setLat(double lat) {
+        Lat = lat;
     }
 
+    public double getLon() {
+        return Lon;
+    }
+
+    public void setLon(double lon) {
+        Lon = lon;
+    }
 
     public boolean isTaken() {
         return isTaken;

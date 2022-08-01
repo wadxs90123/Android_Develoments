@@ -16,7 +16,7 @@
             android:id="@+id/timePicker"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginTop="124dp"
             android:autofillHints=""
             android:ems="10"
             android:enabled="false"
@@ -25,29 +25,27 @@
             android:minHeight="28dp"
             android:textSize="14sp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.258"
+            app:layout_constraintHorizontal_bias="0.161"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.65999997" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <ImageView
             android:id="@+id/PickTimeImage"
-            android:layout_width="33dp"
-            android:layout_height="31dp"
-            android:layout_marginBottom="76dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="124dp"
             android:src="@drawable/ic_baseline_access_time_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
-            app:layout_constraintStart_toEndOf="@+id/timePicker" />
+            app:layout_constraintStart_toEndOf="@+id/timePicker"
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <EditText
             android:id="@+id/timePicker1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="148dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
             android:autofillHints=""
             android:ems="10"
             android:enabled="false"
@@ -56,18 +54,14 @@
             android:minHeight="28dp"
             android:textSize="14sp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.241"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <EditText
             android:id="@+id/timePicker2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="72dp"
+            android:layout_marginTop="72dp"
             android:autofillHints=""
             android:ems="10"
             android:enabled="false"
@@ -76,65 +70,43 @@
             android:minHeight="28dp"
             android:textSize="14sp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintHorizontal_bias="0.169"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.575" />
-
-        <TextView
-            android:id="@+id/addQuestTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/AddQuestTitle"
-            android:textColor="#757575"
-            android:textSize="34sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.447"
-            app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <ImageView
             android:id="@+id/PickFromDateImage"
-            android:layout_width="30dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="164dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:src="@drawable/ic_baseline_edit_calendar_24"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/timePicker1"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <ImageView
             android:id="@+id/PickToDateImage"
-            android:layout_width="35dp"
-            android:layout_height="31dp"
-            android:layout_marginBottom="124dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="72dp"
             android:src="@drawable/ic_baseline_edit_calendar_24"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.26"
-            app:layout_constraintStart_toEndOf="@+id/timePicker2" />
+            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintStart_toEndOf="@+id/timePicker2"
+            app:layout_constraintTop_toTopOf="@+id/guideline19" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="156dp"
+            android:layout_marginEnd="8dp"
             android:text="從"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
-            app:layout_constraintHorizontal_bias="0.458"
-            app:layout_constraintStart_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.4" />
+            app:layout_constraintVertical_bias="0.143" />
 
         <TextView
             android:id="@+id/QuestTitle"
@@ -207,7 +179,7 @@
             android:id="@+id/questTitle2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:text="酬勞 $"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
@@ -224,29 +196,28 @@
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.16"
+            app:layout_constraintHorizontal_bias="0.172"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline3" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintVertical_bias="0.696" />
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="108dp"
+            android:layout_marginEnd="8dp"
             android:text="到"
             android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
-            app:layout_constraintHorizontal_bias="0.289"
-            app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.911" />
+            app:layout_constraintTop_toTopOf="@+id/guideline19"
+            app:layout_constraintVertical_bias="0.479" />
 
         <EditText
             android:id="@+id/editTextNumber"
             android:layout_width="212dp"
             android:layout_height="48dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:ems="10"
             android:hint="請輸入金額"
@@ -254,7 +225,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.123" />
 
         <EditText
             android:id="@+id/questTitleInput"
@@ -284,20 +255,6 @@
             app:layout_constraintTop_toTopOf="@+id/guideline4"
             app:layout_constraintVertical_bias="0.495" />
 
-        <EditText
-            android:id="@+id/questTitleInput3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:ems="10"
-            android:hint="請輸入地點"
-            android:inputType="textPersonName"
-            android:minHeight="48dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"
-            app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline4"
-            app:layout_constraintVertical_bias="0.913" />
-
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline2"
             android:layout_width="wrap_content"
@@ -324,17 +281,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.64" />
+            app:layout_constraintGuide_percent="0.67" />
 
         <Button
             android:id="@+id/AddQuest"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:background="@drawable/press_button_shape"
             android:text="發布"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintHorizontal_bias="0.88"
+            app:layout_constraintStart_toStartOf="@+id/guideline18"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.48" />
 
         <Button
             android:id="@+id/AddQuestBackButton"
@@ -342,6 +302,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
+            android:background="@drawable/press_button_shape"
             android:text="返回"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
             app:layout_constraintStart_toStartOf="parent"
@@ -353,6 +314,42 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.3" />
+
+        <Button
+            android:id="@+id/chooseMap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/press_button_shape"
+            android:text="選取"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:layout_constraintVertical_bias="0.947" />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="155dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:text="請按右邊按鈕選取地點"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"
+            app:layout_constraintStart_toStartOf="@+id/guideline18"
+            app:layout_constraintTop_toTopOf="@+id/guideline4"
+            app:layout_constraintVertical_bias="0.916" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline18"
+            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline19"
+            app:layout_constraintVertical_bias="0.956"
+            app:srcCompat="@drawable/ic_launcher_foreground" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

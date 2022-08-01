@@ -65,7 +65,7 @@ public class TakenInQuestActivity extends AppCompatActivity   {
         //新增google map fragment
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fragment,new MapsFragment());
+        fragmentTransaction.add(R.id.fragment,new MapsFragment(quest));
         fragmentTransaction.commit();
 
     }

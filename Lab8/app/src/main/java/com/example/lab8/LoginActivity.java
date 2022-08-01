@@ -16,6 +16,9 @@ public class LoginActivity extends AppCompatActivity {
         FirebaseUtil.ListenerStart();
 
         setContentView(R.layout.activity_login);
+
+        setTitle("登入註冊");
+
         EditText user_n = findViewById(R.id.editTextTextPersonName);
         EditText user_p = findViewById(R.id.editTextTextPassword);
 
