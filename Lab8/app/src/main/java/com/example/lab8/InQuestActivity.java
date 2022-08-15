@@ -47,6 +47,7 @@ public class InQuestActivity extends AppCompatActivity {
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         });
+
         binding.AskButton.setOnClickListener(view -> {
             Intent intent = new Intent(this,MessageActivity.class);
             intent.putExtra("ID",quest.getId());
@@ -56,6 +57,7 @@ public class InQuestActivity extends AppCompatActivity {
 
         binding.TakeQuest.setOnClickListener(view -> {
             FirebaseUtil.AdaptQuest(quest);
+            FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,quest.getPosterName(),"親愛的 "+quest.getPosterName()+" 您好,您的 "+quest.getQuestName()+" 任務已被 "+FirebaseUtil.loginUsername+" 接取!");
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         });
