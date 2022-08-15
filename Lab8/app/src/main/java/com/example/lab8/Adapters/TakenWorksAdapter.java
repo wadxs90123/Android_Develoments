@@ -65,7 +65,7 @@ public class TakenWorksAdapter extends RecyclerView.Adapter<TakenWorksAdapter.Vi
             DecimalFormat decimalFormat = new DecimalFormat("###.##");
             String Lat_s = decimalFormat.format(mData.get(position).getLat());
             String Lon_s = decimalFormat.format(mData.get(position).getLon());
-            holder.PayoffAndLocation.setText(("單次$"+mData.get(position).getPayOff()+" "+"經緯度("+Lon_s+" , "+Lat_s+")"));
+            holder.PayoffAndLocation.setText(("回饋點數 +5"+" "+"經緯度("+Lon_s+" , "+Lat_s+")"));
 
             // 設置txtItem要顯示的內容
             holder.QuestName.setText(mData.get(position).getQuestName());

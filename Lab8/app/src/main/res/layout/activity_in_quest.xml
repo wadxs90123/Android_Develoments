@@ -17,14 +17,13 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="酬勞"
+            android:text="回饋點數 +5"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.107"
+            app:layout_constraintHorizontal_bias="0.138"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5"
-            app:layout_constraintVertical_bias="0.105" />
+            app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
         <TextView
             android:id="@+id/textView15"
@@ -37,7 +36,7 @@
             app:layout_constraintHorizontal_bias="0.11"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.458" />
+            app:layout_constraintVertical_bias="0.453" />
 
         <TextView
             android:id="@+id/textView18"
@@ -75,7 +74,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline7"
-            app:layout_constraintVertical_bias="0.458" />
+            app:layout_constraintVertical_bias="0.45" />
 
         <TextView
             android:id="@+id/inQuestTimeText"
@@ -107,6 +106,7 @@
             android:layout_height="wrap_content"
             android:text="支薪方式        匯款"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.178"
@@ -158,6 +158,7 @@
             android:layout_marginStart="108dp"
             android:text="標題"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
@@ -207,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.37" />
+            app:layout_constraintGuide_percent="0.39" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
@@ -221,7 +222,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.48" />
 
         <Button
             android:id="@+id/AskButton"

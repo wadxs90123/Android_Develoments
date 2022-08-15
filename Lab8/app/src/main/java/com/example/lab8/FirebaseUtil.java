@@ -1,5 +1,8 @@
 package com.example.lab8;
 
+import android.graphics.drawable.Drawable;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -116,14 +121,16 @@ public class FirebaseUtil {
         }
         return null;
     }
+
+
     public static void sendMessage(String sender, String receiver, String msg){
         String id = messages.push().getKey();
         Message message = new Message(id,sender,receiver,msg);
         messages.child(id).setValue(message);
     }
-    public static void addQuest(String PosterName,String ReceiverName,String QuestName,int Payoff,String Content ,String Date,String time,double Lat,double Lon){
+    public static void addQuest(String PosterName,String ReceiverName,String QuestName,String Content ,String Date,String time,double Lat,double Lon){
         String id = quests.push().getKey();
-        Quest quest = new Quest(id, PosterName,null,QuestName,Payoff,Content,Date,time,Lat,Lon);
+        Quest quest = new Quest(id, PosterName,null,QuestName,Content,Date,time,Lat,Lon);
         //getUser(PosterName).getPostQuests().add(quest);
         quests.child(id).setValue(quest);
     }

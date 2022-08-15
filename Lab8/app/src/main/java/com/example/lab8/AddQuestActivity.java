@@ -32,7 +32,7 @@ public class AddQuestActivity extends AppCompatActivity {
 
         binding.questTitleInput.setText(getIntent().getStringExtra("Title"));
         binding.questTitleInput2.setText(getIntent().getStringExtra("Content"));
-        binding.editTextNumber.setText(getIntent().getStringExtra("Money"));
+//        binding.editTextNumber.setText(getIntent().getStringExtra("Money"));
         binding.timePicker1.setText(getIntent().getStringExtra("Date1"));
         binding.timePicker2.setText(getIntent().getStringExtra("Date2"));
         binding.timePicker.setText(getIntent().getStringExtra("Time"));
@@ -65,7 +65,7 @@ public class AddQuestActivity extends AppCompatActivity {
             intent.putExtra("Lon",Lon);
             intent.putExtra("Title",binding.questTitleInput.getText().toString());
             intent.putExtra("Content",binding.questTitleInput2.getText().toString());
-            intent.putExtra("Money",binding.editTextNumber.getText().toString());
+//            intent.putExtra("Money",binding.editTextNumber.getText().toString());
             intent.putExtra("Date1",binding.timePicker1.getText().toString());
             intent.putExtra("Date2",binding.timePicker2.getText().toString());
             intent.putExtra("Time",binding.timePicker.getText().toString());
@@ -76,13 +76,13 @@ public class AddQuestActivity extends AppCompatActivity {
             String QuestTitleInput = binding.questTitleInput.getText().toString();//標題
             String ContentInput = binding.questTitleInput2.getText().toString();//內容
             String LocationInput = binding.textView17.getText().toString();//地點
-            int ValueInput = Integer.valueOf(binding.editTextNumber.getText().toString());//酬勞
+//            int ValueInput = Integer.valueOf(binding.editTextNumber.getText().toString());//酬勞
             String DateFrom = binding.timePicker1.getText().toString();
             String DateTo = binding.timePicker2.getText().toString();
             String time = binding.timePicker.getText().toString();
 
 //            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo));
-            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,(DateFrom+"-"+DateTo),time,Lat, Lon);
+            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ContentInput,(DateFrom+"-"+DateTo),time,Lat, Lon);
             Intent intent = new Intent(activity,MainActivity.class);
             startActivity(intent);
         });

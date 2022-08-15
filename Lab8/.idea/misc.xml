@@ -36,7 +36,7 @@
         <entry key="app/src/main/res/layout/map.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/message_sender.xml" value="0.33" />
         <entry key="app/src/main/res/layout/message_view_row.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/received_message.xml" value="0.67" />
+        <entry key="app/src/main/res/layout/received_message.xml" value="0.33" />
         <entry key="app/src/main/res/layout/recycler_view_row.xml" value="0.4315352697095436" />
         <entry key="app/src/main/res/layout/right_message_view_row.xml" value="0.33" />
         <entry key="app/src/main/res/menu-v26/menu.xml" value="0.34074074074074073" />

@@ -30,7 +30,7 @@ public class InQuestActivity extends AppCompatActivity {
 
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
-        binding.inQuestPayoffText.setText("$"+quest.getPayOff());
+//        binding.inQuestPayoffText.setText("$"+quest.getPayOff());
         binding.inQuestDateText.setText(quest.getDate());
         binding.inQuestTimeText.setText(quest.getTime());
         binding.inQuestPosterText.setText(quest.getPosterName());

@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/workFragment"
         android:name="com.example.lab8.WorkFragment"
-        android:label="找工作"
+        android:label="找任務"
         tools:layout="@layout/fragment_work" />
     <fragment
         android:id="@+id/commentFragment"

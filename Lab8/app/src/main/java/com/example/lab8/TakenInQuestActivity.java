@@ -36,7 +36,7 @@ public class TakenInQuestActivity extends AppCompatActivity   {
         binding.PosterName.setText(quest.getPosterName());
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
-        binding.inQuestPayoffText.setText("$"+quest.getPayOff());
+//        binding.inQuestPayoffText.setText("$"+quest.getPayOff());
         binding.inQuestDateText.setText(quest.getDate()+" "+quest.getTime());
 //        binding.InQuestLocationText.setText(quest.getLocation());
 

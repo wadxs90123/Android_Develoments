@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.lab8.Adapters.MessageAdapter;
 import com.example.lab8.databinding.ActivityMessageBinding;
@@ -19,6 +23,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class MessageActivity extends AppCompatActivity {
@@ -40,16 +46,24 @@ public class MessageActivity extends AppCompatActivity {
 
         binding.textName.setText(PosterName);
 
+
+
         binding.imageBack.setOnClickListener(view->{
             Intent intent = new Intent(this,MainActivity.class);
             startActivity(intent);
         });
+
         binding.sendButton.setOnClickListener(view -> {
             if(binding.inputMessage.getText()==null||binding.inputMessage.getText().toString().equals("")){
                 return;
             }
             FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,PosterName,binding.inputMessage.getText().toString());
             binding.inputMessage.setText(null);
+        });
+//
+
+        binding.imageButton.setOnClickListener(view ->{
+            FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,PosterName,"DefaultImage");
         });
 
 //         連結元件
@@ -62,7 +76,24 @@ public class MessageActivity extends AppCompatActivity {
         setup();
 //         將資料交給adapter
 
+    }
+    public static void sendImage(ImageView image){
+        String url = "https://cdn2.ettoday.net/images/4064/4064694.jpg";
+        image.setImageDrawable(loadImageFromURL(url));
+        image.setVisibility(View.VISIBLE);
+    }
 
+    private static Drawable loadImageFromURL(String url) {
+        try{
+            InputStream is = (InputStream) new URL(url).getContent();
+            Drawable draw = Drawable.createFromStream(is, "src");
+
+            return draw;
+        }catch (Exception e) {
+            //TODO handle error
+            Log.i("loadingImg", e.toString());
+            return null;
+        }
     }
 
     @Override

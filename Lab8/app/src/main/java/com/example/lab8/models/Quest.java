@@ -27,12 +27,12 @@ public class Quest {
     private String time;
 
     public Quest(){}
-    public Quest(String id,String PosterName,String ReceiverName,String QuestName,int Payoff,String Content,String Date,String time,double Lat,double Lon){
+    public Quest(String id,String PosterName,String ReceiverName,String QuestName,String Content,String Date,String time,double Lat,double Lon){
         this.id = id;
         this.PosterName = PosterName;
         this.ReceiverName = ReceiverName;
         this.QuestName = QuestName;
-        this.PayOff = Payoff;
+//        this.PayOff = Payoff;
         this.Content = Content;
         this.Date = Date;
         this.time = time;
@@ -82,13 +82,13 @@ public class Quest {
         QuestName = questName;
     }
 
-    public int getPayOff() {
-        return PayOff;
-    }
-
-    public void setPayOff(int payOff) {
-        PayOff = payOff;
-    }
+//    public int getPayOff() {
+//        return PayOff;
+//    }
+//
+//    public void setPayOff(int payOff) {
+//        PayOff = payOff;
+//    }
 
     public String getContent() {
         return Content;

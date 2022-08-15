@@ -28,7 +28,8 @@ public class WorkFragment extends Fragment {
     static RecyclerView recycler_view;
     //ArrayList<Quest> mData = new ArrayList<>();
 
-
+//某某某 你的 XXX 任務已被 ooo 接受
+//
     public static WorkFragment newInstance() {
         return new WorkFragment();
     }

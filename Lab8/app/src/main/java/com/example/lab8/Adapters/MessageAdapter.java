@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab8.FirebaseUtil;
 import com.example.lab8.MainActivity;
+import com.example.lab8.MessageActivity;
 import com.example.lab8.PosterInQuestActivity;
 import com.example.lab8.R;
 import com.example.lab8.databinding.MessageSenderBinding;
@@ -22,6 +23,7 @@ import com.example.lab8.databinding.ReceivedMessageBinding;
 import com.example.lab8.models.Message;
 import com.example.lab8.models.Quest;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +33,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         public static final int VIEW_TYPE_SENT=1;
         public static final int VIEW_TYPE_RECEIVE=2;
+
 
         public MessageAdapter(ArrayList<Message> data ) {
             mData = data;
@@ -70,9 +73,17 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(getItemViewType(position)==VIEW_TYPE_SENT){
-            ((SentMessageViewHolder)holder).setData(mData.get(position));
+            try {
+                ((SentMessageViewHolder)holder).setData(mData.get(position));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }else{
-            ((ReceiveMessageViewHolder)holder).setData(mData.get(position));
+            try {
+                ((ReceiveMessageViewHolder)holder).setData(mData.get(position));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -87,8 +98,14 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 super(_binding.getRoot());
                 binding = _binding;
             }
-            void setData(Message message){
-                binding.textMessage.setText(message.getMsg());
+            void setData(Message message) throws IOException {
+                if(message.getMsg().equals("DefaultImage")){
+                    binding.defaultImage.setVisibility(View.VISIBLE);
+                    MessageActivity.sendImage(binding.defaultImage);
+                    binding.textMessage.setHeight(binding.defaultImage.getHeight());
+                }else{
+                    binding.textMessage.setText(message.getMsg());
+                }
                 binding.textDataTime.setText(message.getTimestamp());
             }
         }
@@ -98,9 +115,17 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 super(_binding.getRoot());
                 binding = _binding;
             }
-            void setData(Message message){
-                binding.textMessage.setText(message.getMsg());
+            void setData(Message message) throws IOException {
+                if(message.getMsg().equals("DefaultImage")){
+                    binding.defaultImage.setVisibility(View.VISIBLE);
+                    MessageActivity.sendImage(binding.defaultImage);
+                    binding.textMessage.setHeight(binding.defaultImage.getHeight());
+                }else{
+                    binding.textMessage.setText(message.getMsg());
+                }
                 binding.textDataTime.setText(message.getTimestamp());
+                //                binding.textMessage.setText(message.getMsg());
+//                binding.textDataTime.setText(message.getTimestamp());
             }
         }
 
