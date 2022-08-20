@@ -58,7 +58,8 @@ public class TakenInQuestActivity extends AppCompatActivity   {
         });
         binding.button8.setOnClickListener(view -> {
             FirebaseUtil.deleteQuest(quest);
-            Toast.makeText(getApplicationContext(),"恭喜!已完成此任務", Toast.LENGTH_SHORT).show();
+            FirebaseUtil.addPoint(quest.getReceiverName(),5);
+            Toast.makeText(getApplicationContext(),"恭喜!已完成此任務,獲得 5 點回饋點數", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this,TakenWorksActivity.class);
             startActivity(intent);
         });

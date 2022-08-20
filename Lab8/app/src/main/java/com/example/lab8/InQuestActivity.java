@@ -5,9 +5,11 @@ import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.lab8.databinding.ActivityInQuestBinding;
 import com.example.lab8.models.Quest;
+import com.example.lab8.models.User;
 
 import java.text.DecimalFormat;
 
@@ -26,7 +28,20 @@ public class InQuestActivity extends AppCompatActivity {
         DecimalFormat decimalFormat = new DecimalFormat("###.##");
         String Lat_s = decimalFormat.format(quest.getLat());
         String Lon_s = decimalFormat.format(quest.getLon());
+
+//        double Taker_Lat = getIntent().getDoubleExtra("Lat",0);
+//        double Taker_Lon = getIntent().getDoubleExtra("Lon",0);
+
+//        quest.setTaker_Lat(Taker_Lat);
+//        quest.setTaker_Lon(Taker_Lon);
+
+        FirebaseUtil.UpdateQuest(quest);
+        User rec = FirebaseUtil.getUser(FirebaseUtil.loginUsername);
+        String Taker_Lat_s = decimalFormat.format(rec.getLat());
+        String Taker_Lon_s = decimalFormat.format(rec.getLon());
+
         binding.InQuestLocationText.setText("經緯度("+Lon_s+" , "+Lat_s+")");
+        binding.TakerPos.setText("經緯度("+Taker_Lon_s+" , "+Taker_Lat_s+")");
 
         binding.InQuestTitleText.setText(quest.getQuestName());
         binding.inQuestContentText.setText(quest.getContent());
@@ -38,9 +53,17 @@ public class InQuestActivity extends AppCompatActivity {
         if(quest.getPosterName().equals(FirebaseUtil.loginUsername)){
             binding.AskButton.setEnabled(false);
             binding.TakeQuest.setEnabled(false);
+
+            binding.TakerPosTitle.setVisibility(View.GONE);
+            binding.TakerPos.setVisibility(View.GONE);
+//            binding.ChooseMap.setEnabled(false);
         }else{
             binding.TakeQuest.setEnabled(true);
             binding.AskButton.setEnabled(true);
+
+            binding.TakerPosTitle.setVisibility(View.VISIBLE);
+            binding.TakerPos.setVisibility(View.VISIBLE);
+//            binding.ChooseMap.setEnabled(true);
         }
 
         binding.InQuestBackButton.setOnClickListener(view -> {
@@ -59,6 +82,12 @@ public class InQuestActivity extends AppCompatActivity {
             FirebaseUtil.AdaptQuest(quest);
             FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,quest.getPosterName(),"親愛的 "+quest.getPosterName()+" 您好,您的 "+quest.getQuestName()+" 任務已被 "+FirebaseUtil.loginUsername+" 接取!");
             Intent intent = new Intent(this,MainActivity.class);
+            startActivity(intent);
+        });
+        binding.ChooseMap.setOnClickListener(view ->{
+            Intent intent = new Intent(this,ChooseLocationInTakenActivity.class);
+//            intent.putExtra("Lat", Taker_Lat);
+//            intent.putExtra("Lon",Taker_Lon);
             startActivity(intent);
         });
     }

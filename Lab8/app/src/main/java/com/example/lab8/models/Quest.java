@@ -18,6 +18,8 @@ public class Quest {
     private boolean isTaken;//是否被接取了
     private double Lat;
     private double Lon;
+    private double Taker_Lat;
+    private double Taker_Lon;
     private String id;
     private String QuestName;
     private int PayOff;
@@ -27,7 +29,8 @@ public class Quest {
     private String time;
 
     public Quest(){}
-    public Quest(String id,String PosterName,String ReceiverName,String QuestName,String Content,String Date,String time,double Lat,double Lon){
+
+    public Quest(String id,String PosterName,String ReceiverName,String QuestName,String Content,String Date,String time,double Lat,double Lon,double Taker_lat,double Taker_lon){
         this.id = id;
         this.PosterName = PosterName;
         this.ReceiverName = ReceiverName;
@@ -40,6 +43,8 @@ public class Quest {
         currentTime = System.currentTimeMillis();
         this.Lat = Lat;
         this.Lon = Lon;
+        this.Taker_Lat = Taker_lat;
+        this.Taker_Lon = Taker_lon;
     }
 
     public String getId() {
@@ -89,6 +94,22 @@ public class Quest {
 //    public void setPayOff(int payOff) {
 //        PayOff = payOff;
 //    }
+
+    public double getTaker_Lat() {
+        return Taker_Lat;
+    }
+
+    public void setTaker_Lat(double taker_Lat) {
+        Taker_Lat = taker_Lat;
+    }
+
+    public double getTaker_Lon() {
+        return Taker_Lon;
+    }
+
+    public void setTaker_Lon(double taker_Lon) {
+        Taker_Lon = taker_Lon;
+    }
 
     public String getContent() {
         return Content;

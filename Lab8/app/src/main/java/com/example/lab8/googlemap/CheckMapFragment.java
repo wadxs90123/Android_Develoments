@@ -1,18 +1,5 @@
 package com.example.lab8.googlemap;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.ColorInt;
-import androidx.annotation.DrawableRes;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
-import androidx.fragment.app.Fragment;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -25,17 +12,26 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.CancellationSignal;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.fragment.app.Fragment;
 
 import com.example.lab8.R;
 import com.example.lab8.models.Quest;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.example.lab8.models.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -46,19 +42,17 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.function.Consumer;
-
-public class MapsFragment extends Fragment implements LocationListener
+public class CheckMapFragment extends Fragment implements LocationListener
 {
     private LocationManager locationManager;
     private GoogleMap mMap;
     private Marker me;
     private Marker PosterM;
-    Quest quest;
+    User Receiver;
 //    double lat = 0;
 //    double lon = 0;
-    public MapsFragment(Quest quest){
-        this.quest = quest;
+    public CheckMapFragment(User Receiver){
+        this.Receiver = Receiver;
     }
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -76,8 +70,8 @@ public class MapsFragment extends Fragment implements LocationListener
         public void onMapReady(GoogleMap googleMap) {
             mMap = googleMap;
 
-            LatLng sydney = new LatLng(quest.getLat(), quest.getLon());
-            PosterM = googleMap.addMarker(new MarkerOptions().position(sydney).title("任務地點").icon(vectorToBitmap(R.drawable.ic_baseline_delete_sweep_24, Color.parseColor("#E3C405"))));
+            LatLng sydney = new LatLng(Receiver.getLat(), Receiver.getLon());
+            PosterM = googleMap.addMarker(new MarkerOptions().position(sydney).title("受委託人地點").icon(vectorToBitmap(R.drawable.ic_baseline_delete_sweep_24, Color.parseColor("#E3C405"))));
 //            PosterM.setIcon(new BitmapDescriptor(,));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,11));
 

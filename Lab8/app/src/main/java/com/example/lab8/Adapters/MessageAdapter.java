@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.lab8.CheckMap;
 import com.example.lab8.FirebaseUtil;
 import com.example.lab8.MainActivity;
 import com.example.lab8.MessageActivity;
@@ -35,7 +37,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         public static final int VIEW_TYPE_RECEIVE=2;
 
 
-        public MessageAdapter(ArrayList<Message> data ) {
+        public MessageAdapter(ArrayList<Message> data) {
             mData = data;
         }
 
@@ -101,9 +103,33 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             void setData(Message message) throws IOException {
                 if(message.getMsg().equals("DefaultImage")){
                     binding.defaultImage.setVisibility(View.VISIBLE);
-                    MessageActivity.sendImage(binding.defaultImage);
+                    binding.defaultImage.setImageResource(R.drawable.street);
+//                    MessageActivity.sendImage(binding.defaultImage);
+                    binding.textDataTime.setPadding(0,320,0,0);
                     binding.textMessage.setHeight(binding.defaultImage.getHeight());
                 }else{
+                    if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
+                        //binding.textMessage.setWidth(100);
+                        binding.CompleteButton.setVisibility(View.VISIBLE);
+                        Quest quest = FirebaseUtil.findQuest(message.getReceiver(), message.getSender());
+                        if(quest==null){
+                            binding.CompleteButton.setEnabled(false);
+                            binding.CompleteButton.setText("已完成");
+                        }
+                        binding.CompleteButton.setOnClickListener(view->{
+                            if(quest== null){
+                                Toast.makeText(view.getContext(),"發生未知錯誤,此任務不存在!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                view.setEnabled(false);
+                                binding.CompleteButton.setText("已完成");
+                                FirebaseUtil.deleteQuest(quest);
+                                FirebaseUtil.addPoint(message.getSender(),5);
+                                Toast.makeText(view.getContext(),"恭喜!已完成此任務,獲得 5 點回饋點數", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }else {
+                        binding.CompleteButton.setVisibility(View.GONE);
+                   }
                     binding.textMessage.setText(message.getMsg());
                 }
                 binding.textDataTime.setText(message.getTimestamp());
@@ -118,9 +144,27 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             void setData(Message message) throws IOException {
                 if(message.getMsg().equals("DefaultImage")){
                     binding.defaultImage.setVisibility(View.VISIBLE);
-                    MessageActivity.sendImage(binding.defaultImage);
+                    binding.defaultImage.setImageResource(R.drawable.street);
+                    binding.textDataTime.setPadding(0,320,0,0);
+//                    MessageActivity.sendImage(binding.defaultImage);
                     binding.textMessage.setHeight(binding.defaultImage.getHeight());
                 }else{
+                    Quest quest = FirebaseUtil.findQuest(message.getReceiver(), message.getSender());
+                    if(quest==null){
+                        binding.CheckMapButton.setEnabled(false);
+                        binding.CheckMapButton.setText("已完成");
+                    }
+                    if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
+                        //binding.textMessage.setWidth(100);
+                        binding.CheckMapButton.setVisibility(View.VISIBLE);
+                        binding.CheckMapButton.setOnClickListener(view->{
+                            Intent intent = new Intent(view.getContext(), CheckMap.class);
+                            intent.putExtra("Name",quest.getReceiverName());
+                            view.getContext().startActivity(intent);
+                        });
+                    }else{
+                        binding.CheckMapButton.setVisibility(View.GONE);
+                    }
                     binding.textMessage.setText(message.getMsg());
                 }
                 binding.textDataTime.setText(message.getTimestamp());

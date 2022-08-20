@@ -65,7 +65,6 @@ public class MessageActivity extends AppCompatActivity {
         binding.imageButton.setOnClickListener(view ->{
             FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,PosterName,"DefaultImage");
         });
-
 //         連結元件
         recycler_view = (RecyclerView) binding.chatRecyclerView;
 //         設置RecyclerView為列表型態

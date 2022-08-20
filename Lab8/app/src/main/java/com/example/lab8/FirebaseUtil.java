@@ -122,15 +122,27 @@ public class FirebaseUtil {
         return null;
     }
 
-
+    public static Quest findQuest(String PosterName,String ReceiverName){
+        for(Quest q : QuestStore){
+            if(q.getPosterName().equals(PosterName)&&q.getReceiverName().equals(ReceiverName)){
+                return q;
+            }
+        }
+        return null;
+    }
+    public static void addPoint(String username,int value){
+        User user = getUser(username);
+        user.setPoint(user.getPoint()+value);
+        users.child(username).setValue(user);
+    }
     public static void sendMessage(String sender, String receiver, String msg){
         String id = messages.push().getKey();
         Message message = new Message(id,sender,receiver,msg);
         messages.child(id).setValue(message);
     }
-    public static void addQuest(String PosterName,String ReceiverName,String QuestName,String Content ,String Date,String time,double Lat,double Lon){
+    public static void addQuest(String PosterName,String ReceiverName,String QuestName,String Content ,String Date,String time,double Lat,double Lon,double Taker_lat,double Taker_lon){
         String id = quests.push().getKey();
-        Quest quest = new Quest(id, PosterName,null,QuestName,Content,Date,time,Lat,Lon);
+        Quest quest = new Quest(id, PosterName,null,QuestName,Content,Date,time,Lat,Lon,Taker_lat,Taker_lon);
         //getUser(PosterName).getPostQuests().add(quest);
         quests.child(id).setValue(quest);
     }
@@ -146,6 +158,12 @@ public class FirebaseUtil {
             quest.setReceiverName(loginUsername);
             quests.child(quest.getId()).setValue(quest);
         }
+    }
+    public static void UpdateQuest(Quest quest){//應徵任務
+        quests.child(quest.getId()).setValue(quest);
+    }
+    public static void UpdateUser(User user){
+        users.child(user.getUsername()).setValue(user);
     }
     public static void QuitQuest(Quest quest){
         quest.setReceiverName(null);

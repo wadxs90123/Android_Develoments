@@ -17,6 +17,9 @@ import android.widget.Toast;
 
 import com.example.lab8.databinding.FragmentPersonBinding;
 import com.example.lab8.databinding.FragmentWorkBinding;
+import com.example.lab8.models.User;
+
+import java.text.DecimalFormat;
 
 public class PersonFragment extends Fragment {
 
@@ -35,8 +38,16 @@ public class PersonFragment extends Fragment {
         binding.setData(mViewModel);
         binding.setLifecycleOwner(getActivity());
         //Data Binding
-        binding.textView13.setText(FirebaseUtil.loginUsername);
+        User user = FirebaseUtil.getUser(FirebaseUtil.loginUsername);
 
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
+        String Lat_s = decimalFormat.format(user.getLat());
+        String Lon_s = decimalFormat.format(user.getLon());
+
+        binding.textView23.setText("經緯度("+Lon_s+" , "+Lat_s+")");
+
+        binding.textView13.setText(FirebaseUtil.loginUsername);
+        binding.Points.setText(FirebaseUtil.getUser(FirebaseUtil.loginUsername).getPoint()+"");
         binding.button3.setOnClickListener(view -> {
             Intent intent = new Intent(MainActivity.activity,PostWorksActivity.class);
             startActivity(intent);
@@ -53,7 +64,10 @@ public class PersonFragment extends Fragment {
 
             Toast.makeText(MainActivity.activity.getApplicationContext(),"登出成功!",Toast.LENGTH_SHORT).show();
         });
-
+        binding.button10.setOnClickListener(view->{
+            Intent intent = new Intent(MainActivity.activity,ChooseLocationInTakenActivity.class);
+            startActivity(intent);
+        });
         return binding.getRoot();
     }
 

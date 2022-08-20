@@ -80,9 +80,12 @@ public class AddQuestActivity extends AppCompatActivity {
             String DateFrom = binding.timePicker1.getText().toString();
             String DateTo = binding.timePicker2.getText().toString();
             String time = binding.timePicker.getText().toString();
-
+            if(Lat==0&&Lon==0){
+                Toast.makeText(view.getContext(),"請選擇地點",Toast.LENGTH_SHORT).show();
+                return;
+            }
 //            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ValueInput,ContentInput,LocationInput,(DateFrom+"-"+DateTo));
-            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ContentInput,(DateFrom+"-"+DateTo),time,Lat, Lon);
+            FirebaseUtil.addQuest(Poster,null,QuestTitleInput,ContentInput,(DateFrom+"-"+DateTo),time,Lat, Lon,0,0);
             Intent intent = new Intent(activity,MainActivity.class);
             startActivity(intent);
         });
