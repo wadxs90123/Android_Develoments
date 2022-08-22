@@ -117,7 +117,7 @@ public class ChooseLocationInTakenActivity extends AppCompatActivity implements 
     public void onMapReady(GoogleMap googleMap)
     {
         mGoogleMap=googleMap;
-        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mGoogleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         mGoogleMap.getUiSettings().setZoomControlsEnabled(true);
         mGoogleMap.getUiSettings().setCompassEnabled(true);
@@ -143,7 +143,7 @@ public class ChooseLocationInTakenActivity extends AppCompatActivity implements 
              mGoogleMap.setMyLocationEnabled(true);
         }
         mCurrLocationMarker = mGoogleMap.addMarker(new MarkerOptions().
-                position(new LatLng(23.01064312787427,120.19221814504398)).
+                position(new LatLng(24.9437013,121.3709149)).
                 title("你的位置").draggable(true));
 
         mLastLocation = mCurrLocationMarker.getPosition();

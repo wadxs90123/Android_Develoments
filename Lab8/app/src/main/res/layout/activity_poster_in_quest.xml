@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:text="酬勞"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.107"
@@ -108,6 +109,7 @@
             android:layout_height="wrap_content"
             android:text="支薪方式        匯款"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.183"
@@ -147,6 +149,7 @@
             android:layout_marginStart="104dp"
             android:text="標題"
             android:textSize="24sp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline7"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline5"
@@ -197,7 +200,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.43" />
 
         <Button
             android:id="@+id/AskButton"
@@ -263,6 +266,19 @@
             app:layout_constraintStart_toEndOf="@+id/textView16"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="151dp"
+            android:layout_height="40dp"
+            android:text="回饋點數 +5"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.153"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline5"
+            app:layout_constraintVertical_bias="0.653" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

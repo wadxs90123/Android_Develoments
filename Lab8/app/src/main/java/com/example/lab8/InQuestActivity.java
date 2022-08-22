@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.lab8.databinding.ActivityInQuestBinding;
 import com.example.lab8.models.Quest;
@@ -79,6 +80,10 @@ public class InQuestActivity extends AppCompatActivity {
         });
 
         binding.TakeQuest.setOnClickListener(view -> {
+            if(FirebaseUtil.getUser(FirebaseUtil.loginUsername).getLat()==0&&FirebaseUtil.getUser(FirebaseUtil.loginUsername).getLon()==0){
+                Toast.makeText(view.getContext(),"請到\"我的\"頁面裡面的\"選擇所在地\"選擇自己的所在地後,再應徵任務!",Toast.LENGTH_SHORT).show();
+                return;
+            }
             FirebaseUtil.AdaptQuest(quest);
             FirebaseUtil.sendMessage(FirebaseUtil.loginUsername,quest.getPosterName(),"親愛的 "+quest.getPosterName()+" 您好,您的 "+quest.getQuestName()+" 任務已被 "+FirebaseUtil.loginUsername+" 接取!");
             Intent intent = new Intent(this,MainActivity.class);

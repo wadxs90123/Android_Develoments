@@ -149,10 +149,17 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //                    MessageActivity.sendImage(binding.defaultImage);
                     binding.textMessage.setHeight(binding.defaultImage.getHeight());
                 }else{
-                    Quest quest = FirebaseUtil.findQuest(message.getReceiver(), message.getSender());
+                    Log.d("MYTAG", "setData: hi");
+
+                    Quest quest = FirebaseUtil.findQuest( message.getSender(),message.getReceiver());
+
+                    Log.d("MYTAG", "setData: h0");
                     if(quest==null){
+
+                        Log.d("MYTAG", "setData: h2");
                         binding.CheckMapButton.setEnabled(false);
                         binding.CheckMapButton.setText("已完成");
+//                        return;
                     }
                     if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
                         //binding.textMessage.setWidth(100);

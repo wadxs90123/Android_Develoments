@@ -17,7 +17,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
             android:autofillHints=""
             android:ems="10"
             android:enabled="false"
@@ -26,21 +25,21 @@
             android:minHeight="28dp"
             android:textSize="14sp"
             android:visibility="visible"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintVertical_bias="0.984" />
 
         <ImageView
             android:id="@+id/PickTimeImage"
             android:layout_width="45dp"
             android:layout_height="42dp"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="20dp"
             android:src="@drawable/ic_baseline_access_time_24"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toEndOf="@+id/timePicker"
-            app:layout_constraintTop_toTopOf="@+id/guideline19"
-            app:layout_constraintVertical_bias="0.09" />
+            app:layout_constraintTop_toTopOf="@+id/guideline3"
+            app:layout_constraintVertical_bias="1.0" />
 
         <EditText
             android:id="@+id/timePicker1"
@@ -58,7 +57,7 @@
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.032" />
+            app:layout_constraintVertical_bias="0.16" />
 
         <EditText
             android:id="@+id/timePicker2"
@@ -71,7 +70,7 @@
             android:inputType="text"
             android:minHeight="28dp"
             android:textSize="14sp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.169"
@@ -85,6 +84,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="12dp"
             android:src="@drawable/ic_baseline_edit_calendar_24"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintStart_toEndOf="@+id/timePicker1"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
@@ -95,6 +95,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_baseline_edit_calendar_24"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.19"
@@ -106,13 +107,13 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="44dp"
-            android:text="從"
+            android:layout_marginEnd="28dp"
+            android:text="日期"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.022" />
+            app:layout_constraintVertical_bias="0.24" />
 
         <TextView
             android:id="@+id/QuestTitle"
@@ -214,13 +215,13 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="44dp"
-            android:text="到"
+            android:layout_marginEnd="8dp"
+            android:text="執行時間"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/guideline19"
             app:layout_constraintEnd_toStartOf="@+id/guideline18"
             app:layout_constraintTop_toTopOf="@+id/guideline3"
-            app:layout_constraintVertical_bias="0.914" />
+            app:layout_constraintVertical_bias="0.975" />
 
         <EditText
             android:id="@+id/editTextNumber"
@@ -285,14 +286,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.52" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline19"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.67" />
+            app:layout_constraintGuide_percent="0.71" />
 
         <Button
             android:id="@+id/AddQuest"

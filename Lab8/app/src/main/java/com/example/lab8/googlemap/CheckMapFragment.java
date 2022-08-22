@@ -73,7 +73,7 @@ public class CheckMapFragment extends Fragment implements LocationListener
             LatLng sydney = new LatLng(Receiver.getLat(), Receiver.getLon());
             PosterM = googleMap.addMarker(new MarkerOptions().position(sydney).title("受委託人地點").icon(vectorToBitmap(R.drawable.ic_baseline_delete_sweep_24, Color.parseColor("#E3C405"))));
 //            PosterM.setIcon(new BitmapDescriptor(,));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,11));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sydney,8));
 
 
         }
@@ -137,15 +137,15 @@ public class CheckMapFragment extends Fragment implements LocationListener
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-        if(mMap==null){return ;}
-        LatLng loc = new LatLng(location.getLatitude(),location.getLongitude());
+        if(mMap==null){return ;}//location.getLatitude(),location.getLongitude()
+        LatLng loc = new LatLng(24.9416831,121.3735602);
 
         if(me == null){
             me = mMap.addMarker(new MarkerOptions().position(loc).title("你現在的位置").icon(vectorToBitmap(R.drawable.ic_baseline_directions_run_24, Color.parseColor("#FF0000"))));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
+      //      mMap.moveCamera(CameraUpdateFactory.newLatLng(loc));
         }else{
             me.setPosition(loc);
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,11));
+      //      mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(loc,11));
         }
       //  Toast.makeText(getActivity(),"移動中...",Toast.LENGTH_SHORT).show();
 
