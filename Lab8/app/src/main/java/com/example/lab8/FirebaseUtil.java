@@ -21,6 +21,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class FirebaseUtil {
     public static String loginUsername;
@@ -121,13 +123,24 @@ public class FirebaseUtil {
         }
         return null;
     }
-
+    public static boolean hasQuest(String PosterName,String ReceiverName){
+        for(Quest q : QuestStore){
+            if(q.isTaken()) {
+                if ((q.getPosterName().equals(PosterName) && q.getReceiverName().equals(ReceiverName)) || ((q.getPosterName().equals(ReceiverName) && q.getReceiverName().equals(PosterName)))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     public static Quest findQuest(String PosterName,String ReceiverName){
 
 
         for(Quest q : QuestStore){
-            if(q.getPosterName().equals(PosterName)&&q.getReceiverName().equals(ReceiverName)){
-                return q;
+            if(q.isTaken()) {
+                if (q.getPosterName().equals(PosterName) && q.getReceiverName().equals(ReceiverName)) {
+                    return q;
+                }
             }
         }
         return null;
@@ -136,6 +149,17 @@ public class FirebaseUtil {
         User user = getUser(username);
         user.setPoint(user.getPoint()+value);
         users.child(username).setValue(user);
+    }
+    public static void deleteMessages(String sender,String rec){
+        ArrayList<Message> tM = new ArrayList<>();
+        for(Message m : MessageStore){
+            if((m.getReceiver().equals(sender)&&m.getSender().equals(rec))||(m.getReceiver().equals(rec)&&m.getSender().equals(sender))){
+                tM.add(m);
+            }
+        }
+        for(Message m : tM){
+            messages.child(m.getId()).removeValue();
+        }
     }
     public static void sendMessage(String sender, String receiver, String msg){
         String id = messages.push().getKey();

@@ -27,14 +27,21 @@ public class InQuestActivity extends AppCompatActivity {
         setTitle("工作內容");
 
         DecimalFormat decimalFormat = new DecimalFormat("###.##");
-        String Lat_s = decimalFormat.format(quest.getLat());
-        String Lon_s = decimalFormat.format(quest.getLon());
+        String Lat_s = "";
+        String Lon_s = "";
 
-//        double Taker_Lat = getIntent().getDoubleExtra("Lat",0);
-//        double Taker_Lon = getIntent().getDoubleExtra("Lon",0);
-
-//        quest.setTaker_Lat(Taker_Lat);
-//        quest.setTaker_Lon(Taker_Lon);
+        if(quest.getLat() != 0){
+            Lat_s = decimalFormat.format(quest.getLat());
+        }
+        if(quest.getLon() != 0) {
+            Lon_s = decimalFormat.format(quest.getLon());
+        }
+//
+        double Taker_Lat = getIntent().getDoubleExtra("Lat",0);
+        double Taker_Lon = getIntent().getDoubleExtra("Lon",0);
+//
+        quest.setTaker_Lat(Taker_Lat);
+        quest.setTaker_Lon(Taker_Lon);
 
         FirebaseUtil.UpdateQuest(quest);
         User rec = FirebaseUtil.getUser(FirebaseUtil.loginUsername);

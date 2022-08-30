@@ -41,8 +41,17 @@ public class PersonFragment extends Fragment {
         User user = FirebaseUtil.getUser(FirebaseUtil.loginUsername);
 
         DecimalFormat decimalFormat = new DecimalFormat("###.##");
-        String Lat_s = decimalFormat.format(user.getLat());
-        String Lon_s = decimalFormat.format(user.getLon());
+        String Lat_s = "";
+        String Lon_s = "";
+
+        if(user.getLat()!=0){
+            Lat_s = decimalFormat.format(user.getLat());
+        }
+
+        if(user.getLon()!=0){
+            Lon_s = decimalFormat.format(user.getLon());
+
+        }
 
         binding.textView23.setText("經緯度("+Lon_s+" , "+Lat_s+")");
 

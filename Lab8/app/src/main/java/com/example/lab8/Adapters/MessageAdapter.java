@@ -107,29 +107,31 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 //                    MessageActivity.sendImage(binding.defaultImage);
                     binding.textDataTime.setPadding(0,320,0,0);
                     binding.textMessage.setHeight(binding.defaultImage.getHeight());
-                }else{
-                    if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
-                        //binding.textMessage.setWidth(100);
-                        binding.CompleteButton.setVisibility(View.VISIBLE);
-                        Quest quest = FirebaseUtil.findQuest(message.getReceiver(), message.getSender());
+                }else{//sender == login , receiver == other
+                    if(FirebaseUtil.hasQuest(message.getReceiver(),message.getSender())){
+                        Quest quest = FirebaseUtil.findQuest( message.getReceiver(),message.getSender());
                         if(quest==null){
+                            Log.d("MYTAG", "setData: h2");
                             binding.CompleteButton.setEnabled(false);
                             binding.CompleteButton.setText("已完成");
-                        }
-                        binding.CompleteButton.setOnClickListener(view->{
-                            if(quest== null){
-                                Toast.makeText(view.getContext(),"發生未知錯誤,此任務不存在!", Toast.LENGTH_SHORT).show();
+                        }else{
+                            if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
+                                //binding.textMessage.setWidth(100);
+                                binding.CompleteButton.setVisibility(View.VISIBLE);
+                                binding.CompleteButton.setOnClickListener(view->{
+                                    view.setEnabled(false);
+                                    binding.CompleteButton.setText("已完成");
+                                    FirebaseUtil.deleteQuest(quest);
+                                    FirebaseUtil.deleteMessages(message.getReceiver(),message.getSender());
+                                    FirebaseUtil.addPoint(message.getSender(),5);
+                                    Toast.makeText(view.getContext(),"恭喜!已完成此任務,獲得 5 點回饋點數", Toast.LENGTH_SHORT).show();
+                                });
                             }else{
-                                view.setEnabled(false);
-                                binding.CompleteButton.setText("已完成");
-                                FirebaseUtil.deleteQuest(quest);
-                                FirebaseUtil.addPoint(message.getSender(),5);
-                                Toast.makeText(view.getContext(),"恭喜!已完成此任務,獲得 5 點回饋點數", Toast.LENGTH_SHORT).show();
+                                binding.CompleteButton.setVisibility(View.GONE);
                             }
-                        });
-                    }else {
-                        binding.CompleteButton.setVisibility(View.GONE);
-                   }
+                        }
+
+                    }
                     binding.textMessage.setText(message.getMsg());
                 }
                 binding.textDataTime.setText(message.getTimestamp());
@@ -151,27 +153,29 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 }else{
                     Log.d("MYTAG", "setData: hi");
 
-                    Quest quest = FirebaseUtil.findQuest( message.getSender(),message.getReceiver());
+                    if(FirebaseUtil.hasQuest(message.getSender(),message.getReceiver())){
+                        Quest quest = FirebaseUtil.findQuest( message.getReceiver(),message.getSender());
+                        if(quest==null){
+                            Log.d("MYTAG", "setData: h2");
+                            binding.CheckMapButton.setEnabled(false);
+                            binding.CheckMapButton.setText("已完成");
+                        }else{
+                            if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
+                                //binding.textMessage.setWidth(100);
+                                binding.CheckMapButton.setVisibility(View.VISIBLE);
+                                binding.CheckMapButton.setOnClickListener(view->{
+                                    Intent intent = new Intent(view.getContext(), CheckMap.class);
+                                    intent.putExtra("Name",quest.getReceiverName());
+                                    view.getContext().startActivity(intent);
+                                });
+                            }else{
+                                binding.CheckMapButton.setVisibility(View.GONE);
+                            }
+                        }
 
-                    Log.d("MYTAG", "setData: h0");
-                    if(quest==null){
+                    }
 
-                        Log.d("MYTAG", "setData: h2");
-                        binding.CheckMapButton.setEnabled(false);
-                        binding.CheckMapButton.setText("已完成");
-//                        return;
-                    }
-                    if(message.getMsg().length()>5&&message.getMsg().substring(0,3).equals("親愛的")){
-                        //binding.textMessage.setWidth(100);
-                        binding.CheckMapButton.setVisibility(View.VISIBLE);
-                        binding.CheckMapButton.setOnClickListener(view->{
-                            Intent intent = new Intent(view.getContext(), CheckMap.class);
-                            intent.putExtra("Name",quest.getReceiverName());
-                            view.getContext().startActivity(intent);
-                        });
-                    }else{
-                        binding.CheckMapButton.setVisibility(View.GONE);
-                    }
+
                     binding.textMessage.setText(message.getMsg());
                 }
                 binding.textDataTime.setText(message.getTimestamp());
